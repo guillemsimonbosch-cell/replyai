@@ -8,20 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0a;
-    --surface: #111111;
-    --surface2: #181818;
-    --accent: #ff2d55;
-    --accent2: #ff6b35;
-    --text: #f0ede8;
-    --muted: #666;
-    --border: rgba(255,255,255,0.07);
+    --bg: #12121a;
+    --surface: #1a1a24;
+    --surface2: #22222e;
+    --accent: #e8294a;
+    --accent2: #f05a28;
+    --text: #f4f2f0;
+    --muted: #7a7a8a;
+    --border: rgba(255,255,255,0.11);
   }
- 
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -30,23 +30,38 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
- 
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 6vw;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(16px);
+    padding: 1rem 6vw;
+    background: rgba(18,18,26,0.92);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
+    gap: 1rem;
   }
+  .nav-left { display: flex; align-items: center; gap: 1rem; }
   .logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 1.3rem;
     letter-spacing: -0.02em;
+    white-space: nowrap;
   }
   .logo span { color: var(--accent); }
+  .nav-powered {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.7rem;
+    border-radius: 2rem;
+    white-space: nowrap;
+    display: none;
+  }
+  @media (min-width: 500px) { .nav-powered { display: inline-block; } }
   .nav-cta {
     background: var(--accent);
     color: #fff;
@@ -58,9 +73,10 @@
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
     text-decoration: none;
+    white-space: nowrap;
   }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255,45,85,0.4); }
- 
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(232,41,74,0.4); }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -72,17 +88,18 @@
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(255,45,85,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,107,53,0.08) 0%, transparent 70%);
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,41,74,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(240,90,40,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 50% 10%, rgba(232,41,74,0.07) 0%, transparent 60%);
   }
   .hero-grid {
-    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    position: absolute; inset: 0; z-index: 0; opacity: 0.06;
     background-image: linear-gradient(var(--border) 1px, transparent 1px),
                       linear-gradient(90deg, var(--border) 1px, transparent 1px);
     background-size: 60px 60px;
   }
   .hero-content { position: relative; z-index: 1; max-width: 780px; }
- 
+
   .eyebrow {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: rgba(255,45,85,0.12);
@@ -97,7 +114,7 @@
     animation: fadeUp 0.6s ease both;
   }
   .eyebrow::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
- 
+
   h1 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -138,7 +155,7 @@
     text-decoration: none; transition: color 0.2s;
   }
   .btn-ghost:hover { color: var(--text); }
- 
+
   .hero-stat-row {
     display: flex; flex-wrap: wrap; gap: 2.5rem;
     margin-top: 5rem;
@@ -153,7 +170,7 @@
     color: var(--text);
   }
   .stat-item span { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; }
- 
+
   /* ── PROBLEM ── */
   .section { padding: 8rem 6vw; }
   .section-label {
@@ -168,7 +185,7 @@
     line-height: 1.1;
     margin-bottom: 1.5rem;
   }
- 
+
   .problem-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -192,7 +209,7 @@
     margin-bottom: 0.5rem;
   }
   .problem-item p { font-size: 0.9rem; color: #888; line-height: 1.7; }
- 
+
   /* ── HOW IT WORKS ── */
   .how-section {
     padding: 8rem 6vw;
@@ -236,7 +253,7 @@
     margin-bottom: 0.7rem;
   }
   .step p { font-size: 0.88rem; color: #888; }
- 
+
   /* ── DEMO / PREVIEW ── */
   .demo-section { padding: 8rem 6vw; }
   .demo-wrapper {
@@ -291,7 +308,7 @@
   }
   .typing span:nth-child(2) { animation-delay: 0.2s; }
   .typing span:nth-child(3) { animation-delay: 0.4s; }
- 
+
   /* ── PRICING ── */
   .pricing-section { padding: 8rem 6vw; background: var(--surface); }
   .pricing-grid {
@@ -356,7 +373,7 @@
     border: none; color: #fff;
   }
   .plan-btn:hover { border-color: var(--accent); }
- 
+
   /* ── FAQ ── */
   .faq-section { padding: 8rem 6vw; }
   .faq-list { margin-top: 4rem; max-width: 700px; }
@@ -379,7 +396,7 @@
     max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
   }
   .faq-item.open .faq-a { max-height: 200px; padding-top: 1rem; }
- 
+
   /* ── CTA FINAL ── */
   .cta-section {
     padding: 10rem 6vw;
@@ -394,7 +411,7 @@
   .cta-section h2 { position: relative; z-index: 1; }
   .cta-section p { color: #888; margin: 1.2rem 0 2.5rem; font-size: 1.1rem; position: relative; z-index: 1; }
   .cta-section .btn-primary { position: relative; z-index: 1; font-size: 1.05rem; padding: 1rem 2.8rem; }
- 
+
   /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border);
@@ -402,7 +419,7 @@
     display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
     color: var(--muted); font-size: 0.8rem;
   }
- 
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -415,13 +432,13 @@
     0%, 80%, 100% { transform: scaleY(0.6); opacity: 0.4; }
     40% { transform: scaleY(1.2); opacity: 1; }
   }
- 
+
   .reveal {
     opacity: 0; transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
   .reveal.visible { opacity: 1; transform: none; }
- 
+
   .addon-card {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -443,30 +460,154 @@
     border-top: 1px solid var(--border);
   }
   .addon-price span { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
- 
-  @media (max-width: 700px) {
+
+  @media (max-width: 768px) {
     .problem-grid { grid-template-columns: 1fr; }
     .demo-content { grid-template-columns: 1fr; }
     .steps::before { display: none; }
-    nav { padding: 1rem 5vw; }
+    nav { padding: 0.9rem 5vw; }
+
+    .hero { padding: 8rem 5vw 4rem; }
+    h1 { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+    .hero-sub { font-size: 1rem; }
+    .hero-stat-row { gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; }
+
+    .section { padding: 5rem 5vw; }
+    .how-section { padding: 5rem 5vw; }
+    .demo-section { padding: 5rem 5vw; }
+    .pricing-section { padding: 5rem 5vw; }
+    .faq-section { padding: 5rem 5vw; }
+    .cta-section { padding: 6rem 5vw; }
+
+    h2 { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+
+    /* How it works cards stacked */
+    .how-section > div[style*="grid"] { grid-template-columns: 1fr !important; }
+
+    /* Languages stacked */
+    .lang-grid { grid-template-columns: 1fr !important; }
+
+    /* Flow timeline wraps */
+    .flow-timeline { flex-direction: column; align-items: flex-start !important; gap: 0.8rem !important; }
+    .flow-timeline .arrow { transform: rotate(90deg); align-self: center; }
+
+    /* Knowledge grid */
+    .knowledge-grid { grid-template-columns: 1fr !important; }
+
+    /* Demo section */
+    .demo-content > div:last-child .reply-bubble:nth-child(n+3) { display: none; }
+
+    /* Modal */
+    .modal { padding: 2rem 1.5rem; margin: 1rem; }
+
+    footer { flex-direction: column; text-align: center; gap: 0.6rem; }
   }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 2.2rem; }
+    .btn-primary { width: 100%; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .hero-stat-row { flex-direction: column; gap: 1.2rem; }
+    .plan { padding: 2rem 1.5rem; }
+    .problem-item { padding: 1.8rem; }
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 100%; max-width: 480px;
+    position: relative;
+    animation: fadeUp 0.3s ease both;
+  }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.4rem;
+    background: none; border: none; color: var(--muted);
+    font-size: 1.4rem; cursor: pointer; line-height: 1;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal h3 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 1.5rem; margin-bottom: 0.4rem;
+  }
+  .modal-plan-badge {
+    display: inline-block;
+    background: rgba(255,45,85,0.12);
+    border: 1px solid rgba(255,45,85,0.3);
+    color: var(--accent);
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.25rem 0.8rem; border-radius: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .modal p { color: #888; font-size: 0.88rem; margin-bottom: 1.8rem; }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; color: #888;
+    margin-bottom: 0.4rem; letter-spacing: 0.03em;
+  }
+  .form-group input {
+    width: 100%; padding: 0.75rem 1rem;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus { border-color: rgba(255,45,85,0.5); }
+  .modal-submit {
+    width: 100%; padding: 0.9rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; border-radius: 2rem;
+    font-family: 'DM Sans', sans-serif; font-size: 1rem;
+    cursor: pointer; margin-top: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .modal-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,45,85,0.4); }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .modal-success {
+    display: none; text-align: center; padding: 1.5rem 0;
+  }
+  .modal-success .check {
+    font-size: 3rem; margin-bottom: 1rem;
+  }
+  .modal-success h4 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 1.3rem; margin-bottom: 0.6rem;
+  }
+  .modal-success p { color: #888; font-size: 0.9rem; margin: 0; }
 </style>
 </head>
 <body>
- 
+
 <!-- NAV -->
 <nav>
-  <div class="logo">Reply<span>AI</span></div>
+  <div class="nav-left">
+    <div class="logo">Reply<span>AI</span></div>
+    <span class="nav-powered">Powered by Claude AI · TikTok ready</span>
+  </div>
   <a href="#pricing" class="nav-cta">Ver planes →</a>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="eyebrow">Tecnología Claude AI · Gestión profesional de TikTok</div>
-    <h1 style="font-size: clamp(3.5rem, 8.5vw, 7rem);">Responde<br>comentarios<br><em>sin parar.</em></h1>
+    <h1>Responde<br>comentarios<br><em>sin parar.</em></h1>
     <p class="hero-sub">
       Tu marca siempre activa. La IA responde los comentarios de TikTok con tu tono, en segundos. Tú solo creas contenido.
     </p>
@@ -475,13 +616,12 @@
       <a href="#como" class="btn-ghost">Ver cómo funciona ↓</a>
     </div>
     <div class="hero-stat-row">
-      <div class="stat-item"><strong>3 seg</strong><span>Tiempo de respuesta</span></div>
       <div class="stat-item"><strong>97%</strong><span>Tasa de satisfacción</span></div>
       <div class="stat-item"><strong>8h/sem</strong><span>Tiempo ahorrado de media</span></div>
     </div>
   </div>
 </section>
- 
+
 <!-- PROBLEM -->
 <section class="section reveal">
   <p class="section-label">El problema</p>
@@ -510,32 +650,87 @@
     </div>
   </div>
 </section>
- 
+
 <!-- HOW IT WORKS -->
 <section class="how-section reveal" id="como">
-  <div style="padding: 0 0;">
-    <p class="section-label">Cómo funciona</p>
-    <h2>3 pasos. Una vez.<br>Para siempre.</h2>
+  <p class="section-label">Cómo funciona</p>
+  <h2>3 pasos. Una vez.<br>Para siempre.</h2>
+  <p style="color:#888; max-width:480px; margin-top:0.8rem; margin-bottom: 4rem;">Configuras todo en menos de 10 minutos. Después, la IA trabaja por ti 24/7 sin que tengas que hacer nada más.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px;">
+
+    <!-- STEP 1 -->
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">01</div>
+      <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">📱</div>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">Conecta tu TikTok</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">Un clic. Vinculamos tu cuenta con OAuth oficial. Seguro, sin contraseñas, revocable en cualquier momento.</p>
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Conexión segura OAuth</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Sin guardar contraseñas</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Listo en 60 segundos</div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">02</div>
+      <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">🎙️</div>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">Define tu voz</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">¿Eres cercano, gracioso, profesional? Configura tu tono y sube tu información una sola vez. La IA lo recuerda para siempre.</p>
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Tono y personalidad de marca</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Sube tu catálogo y FAQs</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Aprende de tus respuestas</div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div style="background: var(--bg); border: 1px solid rgba(255,45,85,0.25); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.5)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,45,85,0.25)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">03</div>
+      <div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+      <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">⚡</div>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">La IA responde sola</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">Claude genera respuestas en segundos, con tu tono exacto. Revísalas con un clic o activa el modo automático.</p>
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Respuesta en menos de 3 segundos</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Modo manual o automático</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> 24/7 sin que hagas nada</div>
+      </div>
+    </div>
+
   </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Conecta tu TikTok</h3>
-      <p>Un clic. Vinculamos tu cuenta de forma segura y empezamos a escuchar comentarios nuevos.</p>
+
+  <!-- TIMELINE VISUAL -->
+  <div style="margin-top: 3rem; max-width: 1000px; background: var(--bg); border: 1px solid var(--border); border-radius: 18px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+    <div style="display:flex; align-items:center; gap:0.8rem;">
+      <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">💬</div>
+      <div style="font-size:0.82rem; color:#aaa;">Comentario<br>entra en TikTok</div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Define tu voz</h3>
-      <p>¿Eres gracioso, cercano, profesional? Configuras tu tono una sola vez y la IA lo recuerda siempre.</p>
+    <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
+    <div style="display:flex; align-items:center; gap:0.8rem;">
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🔍</div>
+      <div style="font-size:0.82rem; color:#aaa;">ReplyAI lo<br>detecta al instante</div>
     </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>La IA responde</h3>
-      <p>Claude genera respuestas personalizadas en segundos. Tú las revisas o activas el modo automático.</p>
+    <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
+    <div style="display:flex; align-items:center; gap:0.8rem;">
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🧠</div>
+      <div style="font-size:0.82rem; color:#aaa;">Claude genera<br>la respuesta</div>
+    </div>
+    <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
+    <div style="display:flex; align-items:center; gap:0.8rem;">
+      <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">👁️</div>
+      <div style="font-size:0.82rem; color:#aaa;">Tú apruebas<br>(o va solo)</div>
+    </div>
+    <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
+    <div style="display:flex; align-items:center; gap:0.8rem;">
+      <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">✅</div>
+      <div style="font-size:0.82rem; color:#aaa;">Publicado en<br><strong style="color:var(--text);">&lt;3 segundos</strong></div>
     </div>
   </div>
+
 </section>
- 
+
 <!-- DEMO -->
 <section class="demo-section reveal">
   <p class="section-label">Demo en vivo</p>
@@ -576,15 +771,15 @@
     </div>
   </div>
 </section>
- 
+
 <!-- KNOWLEDGE FEATURE -->
 <section class="section reveal" style="background: var(--surface);">
   <p class="section-label">Siempre tiene la respuesta</p>
   <h2>La IA que conoce<br>tu negocio <em>por dentro.</em></h2>
   <p style="color:#888; max-width:520px; margin-bottom: 3.5rem;">No es una IA genérica. Es una IA entrenada con tu información, tu tono y tus productos. Combinada con todo lo que ya sabe del mundo.</p>
- 
+
   <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; max-width:900px;">
- 
+
     <div style="background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem;">
       <div style="font-size:2rem; margin-bottom:1rem;">📂</div>
       <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;">Tú le das tu información</h3>
@@ -596,7 +791,7 @@
         <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>❓</span> Preguntas frecuentes de tu sector</div>
       </div>
     </div>
- 
+
     <div style="background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem;">
       <div style="font-size:2rem; margin-bottom:1rem;">🌐</div>
       <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;">La IA ya sabe el resto</h3>
@@ -606,28 +801,11 @@
         <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>📱</span> Tendencias y contexto de TikTok</div>
         <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>😄</span> Respuestas naturales y con personalidad</div>
         <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>🌍</span> Conocimiento actualizado del mundo</div>
-        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
-          <div style="font-size:0.72rem; color:var(--muted); margin-bottom:0.6rem; letter-spacing:0.05em; text-transform:uppercase;">Idiomas disponibles</div>
-          <div style="display:flex; flex-direction:column; gap:0.4rem;">
-            <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.8rem;">
-              <span style="font-size:1rem;">🇪🇸</span>
-              <span><strong style="color:var(--text);">Español</strong> — Respuestas naturales para audiencias hispanohablantes</span>
-            </div>
-            <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.8rem;">
-              <span style="font-size:1rem;">🏴󠁥󠁳󠁣󠁴󠁿</span>
-              <span><strong style="color:var(--text);">Català</strong> — Respostes naturals per a audiències catalanoparlants</span>
-            </div>
-            <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.8rem;">
-              <span style="font-size:1rem;">🇬🇧</span>
-              <span><strong style="color:var(--text);">English</strong> — Natural responses for international audiences</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
- 
+
   </div>
- 
+
   <!-- FLOW VISUAL -->
   <div style="margin-top:1.5rem; max-width:900px; background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem; display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items:center; gap:1rem; text-align:center;">
     <div>
@@ -645,7 +823,7 @@
       <div style="font-size:0.78rem; color:#aaa; line-height:1.6;">Respuesta perfecta<br>publicada al instante</div>
     </div>
   </div>
- 
+
   <!-- ALERT NOTE -->
   <div style="margin-top:1rem; max-width:900px; background:rgba(255,45,85,0.05); border:1px solid rgba(255,45,85,0.15); border-radius:14px; padding:1.2rem 1.8rem; display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
     <div style="font-size:1.2rem; padding-top:0.1rem;">🔔</div>
@@ -654,79 +832,127 @@
       En casos excepcionales (quejas delicadas, preguntas con datos que no has subido aún), te avisamos por <strong style="color:#25d366;">WhatsApp</strong> o <strong style="color:#ff8c69;">email</strong> para que respondas tú. Así la IA aprende y la próxima vez lo resuelve sola.
     </div>
   </div>
- 
+
 </section>
- 
+
+<!-- LANGUAGES -->
+<section class="section reveal" style="background: var(--bg);">
+  <p class="section-label">Idiomas disponibles</p>
+  <h2>Responde a tus seguidores<br>en su propio idioma.</h2>
+  <p style="color:#888; max-width:500px; margin-top:0.8rem; margin-bottom: 3.5rem;">ReplyAI detecta automáticamente el idioma de cada comentario y responde en el mismo. Sin configuración adicional.</p>
+
+  <div class="lang-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 800px;">
+
+    <!-- ENGLISH -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <span style="font-size: 2.2rem; line-height:1; flex-shrink:0;">🇬🇧</span>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">English</div>
+        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Natural replies in English for international audiences.</div>
+      </div>
+    </div>
+
+    <!-- CASTELLANO -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <span style="font-size: 2.2rem; line-height:1; flex-shrink:0;">🇪🇸</span>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Español</div>
+        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Comunicación fluida con toda la comunidad hispanohablante.</div>
+      </div>
+    </div>
+
+    <!-- CATALÀ -->
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <span style="font-size: 2.2rem; line-height:1; flex-shrink:0;">
+        <!-- Senyera SVG -->
+        <svg width="36" height="26" viewBox="0 0 36 26" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;">
+          <rect width="36" height="26" fill="#FCDD09"/>
+          <rect y="0"   width="36" height="3.7" fill="#DA121A"/>
+          <rect y="7.4" width="36" height="3.7" fill="#DA121A"/>
+          <rect y="14.8" width="36" height="3.7" fill="#DA121A"/>
+          <rect y="22.3" width="36" height="3.7" fill="#DA121A"/>
+        </svg>
+      </span>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Català · Catalan</div>
+        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Respostes properes per als teus seguidors catalanoparlants.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 2rem; max-width: 800px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 1rem;">
+    <span style="color: var(--accent); font-size: 1rem; flex-shrink:0;">ℹ</span>
+    <p style="font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin: 0;">El idioma se detecta automáticamente en cada comentario. No es necesario configurar nada por tu parte.</p>
+  </div>
+
+</section>
+
 <!-- PRICING -->
 <section class="pricing-section reveal" id="pricing">
   <p class="section-label">Precios</p>
-  <h2>Un precio. Sin sorpresas.<br>Sin letra pequeña.</h2>
-  <p style="color:#888; max-width:480px; margin-top:0.8rem;">Prueba 15 días gratis. Después, un plan único con todo incluido. Si necesitas más, añade solo lo que uses.</p>
- 
-  <!-- PLAN ÚNICO -->
-  <div style="margin-top: 4rem; display: flex; justify-content: center;">
-    <div class="plan featured" style="max-width: 480px; width: 100%;">
-      <div class="plan-badge">Todo incluido</div>
-      <div class="plan-name">Plan ReplyAI</div>
-      <div class="plan-price"><sup>€</sup>39<small style="font-size:1.5rem">.99</small></div>
-      <div class="plan-period">/ mes · después de 15 días de prueba gratis</div>
+  <h2>Elige tu plan.<br>Sin letra pequeña.</h2>
+  <p style="color:#888; max-width:480px; margin-top:0.8rem;">Prueba 15 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
+
+  <div class="pricing-grid" style="margin-top: 4rem;">
+
+    <!-- PLAN BÁSICO -->
+    <div class="plan">
+      <div class="plan-name">Básico</div>
+      <div class="plan-price"><sup>€</sup>9<small style="font-size:1.5rem">.99</small></div>
+      <div class="plan-period">/ mes · después de 15 días gratis</div>
       <ul class="plan-features">
+        <li>500 respuestas / mes</li>
         <li>1 cuenta TikTok conectada</li>
-        <li>Hasta 3.000 respuestas/mes</li>
         <li>Modo revisión manual y automático</li>
         <li>Personalización de tono de marca</li>
+        <li>Soporte por email</li>
+      </ul>
+      <button class="plan-btn">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
+    </div>
+
+    <!-- PLAN MEJORADO -->
+    <div class="plan featured">
+      <div class="plan-badge">Más popular</div>
+      <div class="plan-name">Mejorado</div>
+      <div class="plan-price"><sup>€</sup>24<small style="font-size:1.5rem">.99</small></div>
+      <div class="plan-period">/ mes · después de 15 días gratis</div>
+      <ul class="plan-features">
+        <li>2.000 respuestas / mes</li>
+        <li>2 cuentas TikTok conectadas</li>
+        <li>Modo manual y automático</li>
+        <li>Personalización de tono de marca</li>
         <li>Historial y análisis de comentarios</li>
-        <li>Alertas por WhatsApp y email si la IA no puede responder</li>
+        <li>Alertas por WhatsApp y email</li>
         <li>Soporte por email y chat</li>
       </ul>
-      <button class="plan-btn">Empezar prueba de 15 días →</button>
-      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito. Cancela cuando quieras.</p>
+      <button class="plan-btn">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
     </div>
-  </div>
- 
-  <!-- ADD-ONS -->
-  <div style="margin-top: 5rem;">
-    <p class="section-label" style="margin-bottom:1rem;">Complementos opcionales</p>
-    <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.4rem; margin-bottom:0.5rem;">Añade solo lo que necesitas.</h3>
-    <p style="color:#888; font-size:0.9rem; margin-bottom:2.5rem;">Actívalos o desactívalos en cualquier momento desde tu panel.</p>
- 
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
-      <div class="addon-card">
-        <div class="addon-icon">📱</div>
-        <div class="addon-info">
-          <div class="addon-name">Cuenta TikTok extra</div>
-          <div class="addon-desc">Conecta una cuenta adicional con su propio tono de marca.</div>
-        </div>
-        <div class="addon-price">+€10<span>/mes</span></div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon">🚀</div>
-        <div class="addon-info">
-          <div class="addon-name">Respuestas extra</div>
-          <div class="addon-desc">Añade 1.000 respuestas más al mes para cuentas con mucho tráfico.</div>
-        </div>
-        <div class="addon-price">+€8<span>/mes</span></div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon">📊</div>
-        <div class="addon-info">
-          <div class="addon-name">Analytics avanzado</div>
-          <div class="addon-desc">Reportes semanales, sentimiento de comentarios y métricas de engagement.</div>
-        </div>
-        <div class="addon-price">+€6<span>/mes</span></div>
-      </div>
-      <div class="addon-card">
-        <div class="addon-icon">⚡</div>
-        <div class="addon-info">
-          <div class="addon-name">Respuesta prioritaria</div>
-          <div class="addon-desc">Respuestas en menos de 30 segundos. Ideal para cuentas en crecimiento rápido.</div>
-        </div>
-        <div class="addon-price">+€5<span>/mes</span></div>
-      </div>
+
+    <!-- PLAN PREMIUM -->
+    <div class="plan">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price"><sup>€</sup>39<small style="font-size:1.5rem">.99</small></div>
+      <div class="plan-period">/ mes · después de 15 días gratis</div>
+      <ul class="plan-features">
+        <li>3.500 respuestas / mes</li>
+        <li>Hasta 3 cuentas TikTok</li>
+        <li>Modo manual y automático</li>
+        <li>Personalización de tono de marca</li>
+        <li>Analytics avanzado + reportes</li>
+        <li>Alertas por WhatsApp y email</li>
+        <li>Respuestas prioritarias (&lt;30 seg)</li>
+        <li>Soporte prioritario</li>
+      </ul>
+      <button class="plan-btn">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
     </div>
+
   </div>
 </section>
- 
+
 <!-- FAQ -->
 <section class="faq-section reveal">
   <p class="section-label">FAQ</p>
@@ -754,7 +980,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- FINAL CTA -->
 <section class="cta-section reveal">
   <div class="cta-bg"></div>
@@ -762,14 +988,51 @@
   <p>14 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
   <a href="#pricing" class="btn-primary">Probar ReplyAI gratis →</a>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="logo">Reply<span>AI</span></div>
   <span>© 2025 ReplyAI · Hecho con Claude AI</span>
-  <span>Privacidad · Términos · Contacto</span>
+  <span>Privacidad · Términos · <a href="mailto:replyaiiacat@gmail.com" style="color:var(--muted); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">replyaiiacat@gmail.com</a></span>
 </footer>
- 
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="modalForm">
+      <h3>Empieza gratis 15 días</h3>
+      <div class="modal-plan-badge" id="modalPlanName">Plan Básico</div>
+      <p>Sin tarjeta de crédito. Cancela cuando quieras. Te contactaremos en menos de 24h.</p>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" name="telefono" placeholder="+34 600 000 000" required>
+        </div>
+        <input type="hidden" name="plan" id="formPlan" value="Básico">
+        <input type="hidden" name="_subject" id="formSubject" value="🚀 Nuevo lead ReplyAI — Plan Básico">
+        <button type="submit" class="modal-submit" id="submitBtn">Quiero empezar gratis →</button>
+      </form>
+    </div>
+
+    <div class="modal-success" id="modalSuccess">
+      <div class="check">✅</div>
+      <h4>¡Recibido!</h4>
+      <p>Gracias por tu interés. Te contactaremos en menos de 24h en el email que nos has dejado.</p>
+    </div>
+  </div>
+</div>
+
 <script>
   // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
@@ -777,7 +1040,7 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
- 
+
   // FAQ toggle
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
@@ -786,7 +1049,7 @@
       if (!isOpen) item.classList.add('open');
     });
   });
- 
+
   // Typing animation loop
   setInterval(() => {
     const t = document.querySelector('.typing');
@@ -799,6 +1062,73 @@
       t?.parentElement?.insertAdjacentHTML('beforeend', '<div class="typing"><span></span><span></span><span></span></div>');
     }, 3000);
   }, 5000);
+
+  // Modal
+  function openModal(planName) {
+    document.getElementById('modalPlanName').textContent = planName;
+    document.getElementById('formPlan').value = planName;
+    document.getElementById('formSubject').value = '🚀 Nuevo lead ReplyAI — ' + planName;
+    document.getElementById('modalForm').style.display = 'block';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('contactForm').reset();
+  }
+
+  // Cerrar al hacer clic fuera
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Asociar botones a planes
+  document.querySelectorAll('.plan-btn').forEach((btn, i) => {
+    const planes = ['Plan Básico', 'Plan Mejorado', 'Plan Premium'];
+    btn.addEventListener('click', () => openModal(planes[i] || 'Plan ReplyAI'));
+  });
+
+  // Botones CTA hero y final
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal('Plan ReplyAI');
+    });
+  });
+
+  // Envío a Formspree
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+
+    const data = new FormData(this);
+
+    try {
+      const res = await fetch('https://formspree.io/f/mdapnkly', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Quiero empezar gratis →';
+        alert('Hubo un error. Por favor inténtalo de nuevo.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Quiero empezar gratis →';
+      alert('Hubo un error de conexión. Por favor inténtalo de nuevo.');
+    }
+  });
 </script>
 </body>
 </html>
