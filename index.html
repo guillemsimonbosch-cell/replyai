@@ -588,7 +588,22 @@
     font-family: 'Syne', sans-serif; font-weight: 800;
     font-size: 1.3rem; margin-bottom: 0.6rem;
   }
-  .modal-success p { color: #888; font-size: 0.9rem; margin: 0; }
+  .nav-lang {
+    display: flex; align-items: center; gap: 0.3rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    padding: 0.2rem 0.3rem;
+  }
+  .lang-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 0.25rem 0.55rem; border-radius: 2rem;
+    font-size: 0.72rem; font-family: 'DM Sans', sans-serif;
+    color: var(--muted); transition: all 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .lang-btn.active { background: var(--accent); color: #fff; }
+  .lang-btn:hover:not(.active) { color: var(--text); }
 </style>
 </head>
 <body>
@@ -599,7 +614,14 @@
     <div class="logo">Reply<span>AI</span></div>
     <span class="nav-powered">Powered by Claude AI · TikTok ready</span>
   </div>
-  <a href="#pricing" class="nav-cta">Ver planes →</a>
+  <div style="display:flex; align-items:center; gap:0.8rem;">
+    <div class="nav-lang">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ca')">CA</button>
+    </div>
+    <a href="#pricing" class="nav-cta" data-i18n="nav_cta">Ver planes →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -607,391 +629,299 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <h1>Responde<br>comentarios<br><em>sin parar.</em></h1>
-    <p class="hero-sub">
+    <h1 data-i18n="hero_h1">Responde<br>comentarios<br><em>sin parar.</em></h1>
+    <p class="hero-sub" data-i18n="hero_sub">
       Tu marca siempre activa. La IA responde los comentarios de TikTok con tu tono, en segundos. Tú solo creas contenido.
     </p>
     <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">Empieza gratis 14 días</a>
-      <a href="#como" class="btn-ghost">Ver cómo funciona ↓</a>
+      <a href="#pricing" class="btn-primary" data-i18n="hero_cta1">Empieza gratis 14 días</a>
+      <a href="#como" class="btn-ghost" data-i18n="hero_cta2">Ver cómo funciona ↓</a>
     </div>
     <div class="hero-stat-row">
-      <div class="stat-item"><strong>97%</strong><span>Tasa de satisfacción</span></div>
-      <div class="stat-item"><strong>8h/sem</strong><span>Tiempo ahorrado de media</span></div>
+      <div class="stat-item"><strong>97%</strong><span data-i18n="stat1">Tasa de satisfacción</span></div>
+      <div class="stat-item"><strong>8h/sem</strong><span data-i18n="stat2">Tiempo ahorrado de media</span></div>
     </div>
   </div>
 </section>
 
 <!-- PROBLEM -->
 <section class="section reveal">
-  <p class="section-label">El problema</p>
-  <h2>Crear contenido es solo<br>la mitad del trabajo.</h2>
-  <p style="color:#888; max-width:500px;">La otra mitad son los comentarios. Y ahí es donde pierdes horas que deberías estar grabando.</p>
+  <p class="section-label" data-i18n="prob_label">El problema</p>
+  <h2 data-i18n="prob_h2">Crear contenido es solo<br>la mitad del trabajo.</h2>
+  <p style="color:#888; max-width:500px;" data-i18n="prob_sub">La otra mitad son los comentarios. Y ahí es donde pierdes horas que deberías estar grabando.</p>
   <div class="problem-grid">
     <div class="problem-item">
       <div class="problem-icon">⏰</div>
-      <h3>Horas perdidas respondiendo</h3>
-      <p>Los creadores pasan de media 2-3 horas diarias respondiendo comentarios repetitivos.</p>
+      <h3 data-i18n="prob1_h">Horas perdidas respondiendo</h3>
+      <p data-i18n="prob1_p">Los creadores pasan de media 2-3 horas diarias respondiendo comentarios repetitivos.</p>
     </div>
     <div class="problem-item">
       <div class="problem-icon">📉</div>
-      <h3>Comentarios sin respuesta = menos alcance</h3>
-      <p>El algoritmo de TikTok premia la interacción. Ignorar comentarios penaliza tu visibilidad.</p>
+      <h3 data-i18n="prob2_h">Comentarios sin respuesta = menos alcance</h3>
+      <p data-i18n="prob2_p">El algoritmo de TikTok premia la interacción. Ignorar comentarios penaliza tu visibilidad.</p>
     </div>
     <div class="problem-item">
       <div class="problem-icon">😤</div>
-      <h3>Imposible escalar</h3>
-      <p>Cuanto más creces, más comentarios. Y el volumen se vuelve inmanejable manualmente.</p>
+      <h3 data-i18n="prob3_h">Imposible escalar</h3>
+      <p data-i18n="prob3_p">Cuanto más creces, más comentarios. Y el volumen se vuelve inmanejable manualmente.</p>
     </div>
     <div class="problem-item">
       <div class="problem-icon">🎭</div>
-      <h3>Tono inconsistente</h3>
-      <p>Cuando respondes a las 2am estás agotado. La IA siempre responde en tu mejor versión.</p>
+      <h3 data-i18n="prob4_h">Tono inconsistente</h3>
+      <p data-i18n="prob4_p">Cuando respondes a las 2am estás agotado. La IA siempre responde en tu mejor versión.</p>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="how-section reveal" id="como">
-  <p class="section-label">Cómo funciona</p>
-  <h2>3 pasos. Una vez.<br>Para siempre.</h2>
-  <p style="color:#888; max-width:480px; margin-top:0.8rem; margin-bottom: 4rem;">Configuras todo en menos de 10 minutos. Después, la IA trabaja por ti 24/7 sin que tengas que hacer nada más.</p>
+  <p class="section-label" data-i18n="how_label">Cómo funciona</p>
+  <h2 data-i18n="how_h2">3 pasos. Una vez.<br>Para siempre.</h2>
+  <p style="color:#888; max-width:480px; margin-top:0.8rem; margin-bottom: 4rem;" data-i18n="how_sub">Configuras todo en menos de 10 minutos. Después, la IA trabaja por ti 24/7 sin que tengas que hacer nada más.</p>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1000px;">
-
-    <!-- STEP 1 -->
-    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">01</div>
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(232,41,74,0.06); line-height:1;">01</div>
       <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">📱</div>
-      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">Conecta tu TikTok</h3>
-      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">Un clic. Vinculamos tu cuenta con OAuth oficial. Seguro, sin contraseñas, revocable en cualquier momento.</p>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;" data-i18n="step1_h">Conecta tu TikTok</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;" data-i18n="step1_p">Un clic. Vinculamos tu cuenta con OAuth oficial. Seguro, sin contraseñas, revocable en cualquier momento.</p>
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Conexión segura OAuth</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Sin guardar contraseñas</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Listo en 60 segundos</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step1_c1">Conexión segura OAuth</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step1_c2">Sin guardar contraseñas</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step1_c3">Listo en 60 segundos</span></div>
       </div>
     </div>
-
-    <!-- STEP 2 -->
-    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">02</div>
+    <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(232,41,74,0.06); line-height:1;">02</div>
       <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">🎙️</div>
-      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">Define tu voz</h3>
-      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">¿Eres cercano, gracioso, profesional? Configura tu tono y sube tu información una sola vez. La IA lo recuerda para siempre.</p>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;" data-i18n="step2_h">Define tu voz</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;" data-i18n="step2_p">¿Eres cercano, gracioso, profesional? Configura tu tono y sube tu información una sola vez. La IA lo recuerda para siempre.</p>
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Tono y personalidad de marca</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Sube tu catálogo y FAQs</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Aprende de tus respuestas</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step2_c1">Tono y personalidad de marca</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step2_c2">Sube tu catálogo y FAQs</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step2_c3">Aprende de tus respuestas</span></div>
       </div>
     </div>
-
-    <!-- STEP 3 -->
-    <div style="background: var(--bg); border: 1px solid rgba(255,45,85,0.25); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,45,85,0.5)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(255,45,85,0.25)';this.style.transform='none'">
-      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(255,45,85,0.06); line-height:1;">03</div>
+    <div style="background: var(--bg); border: 1px solid rgba(232,41,74,0.25); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.5)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='rgba(232,41,74,0.25)';this.style.transform='none'">
+      <div style="position:absolute; top:1.5rem; right:1.5rem; font-family:'Syne',sans-serif; font-weight:800; font-size:4rem; color:rgba(232,41,74,0.06); line-height:1;">03</div>
       <div style="position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
       <div style="width:52px; height:52px; border-radius:16px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:1.8rem;">⚡</div>
-      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;">La IA responde sola</h3>
-      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;">Claude genera respuestas en segundos, con tu tono exacto. Revísalas con un clic o activa el modo automático.</p>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1.15rem; margin-bottom:0.8rem;" data-i18n="step3_h">La IA responde sola</h3>
+      <p style="font-size:0.88rem; color:#888; line-height:1.7; margin-bottom:1.5rem;" data-i18n="step3_p">Claude genera respuestas en segundos, con tu tono exacto. Revísalas con un clic o activa el modo automático.</p>
       <div style="display:flex; flex-direction:column; gap:0.4rem;">
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Respuesta en menos de 3 segundos</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> Modo manual o automático</div>
-        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#666;"><span style="color:var(--accent);">✓</span> 24/7 sin que hagas nada</div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step3_c1">Respuesta en menos de 3 segundos</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step3_c2">Modo manual o automático</span></div>
+        <div style="display:flex; align-items:center; gap:0.6rem; font-size:0.8rem; color:#888;"><span style="color:var(--accent);">✓</span> <span data-i18n="step3_c3">24/7 sin que hagas nada</span></div>
       </div>
     </div>
-
   </div>
 
-  <!-- TIMELINE VISUAL -->
+  <!-- TIMELINE -->
   <div style="margin-top: 3rem; max-width: 1000px; background: var(--bg); border: 1px solid var(--border); border-radius: 18px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
     <div style="display:flex; align-items:center; gap:0.8rem;">
       <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">💬</div>
-      <div style="font-size:0.82rem; color:#aaa;">Comentario<br>entra en TikTok</div>
+      <div style="font-size:0.82rem; color:#aaa;" data-i18n="tl1">Comentario<br>entra en TikTok</div>
     </div>
     <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
     <div style="display:flex; align-items:center; gap:0.8rem;">
       <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🔍</div>
-      <div style="font-size:0.82rem; color:#aaa;">ReplyAI lo<br>detecta al instante</div>
+      <div style="font-size:0.82rem; color:#aaa;" data-i18n="tl2">ReplyAI lo<br>detecta al instante</div>
     </div>
     <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
     <div style="display:flex; align-items:center; gap:0.8rem;">
       <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">🧠</div>
-      <div style="font-size:0.82rem; color:#aaa;">Claude genera<br>la respuesta</div>
+      <div style="font-size:0.82rem; color:#aaa;" data-i18n="tl3">Claude genera<br>la respuesta</div>
     </div>
     <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
     <div style="display:flex; align-items:center; gap:0.8rem;">
       <div style="width:36px; height:36px; border-radius:50%; background:var(--surface2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">👁️</div>
-      <div style="font-size:0.82rem; color:#aaa;">Tú apruebas<br>(o va solo)</div>
+      <div style="font-size:0.82rem; color:#aaa;" data-i18n="tl4">Tú apruebas<br>(o va solo)</div>
     </div>
     <div style="color:var(--accent); font-size:1.4rem; opacity:0.5;">→</div>
     <div style="display:flex; align-items:center; gap:0.8rem;">
       <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0;">✅</div>
-      <div style="font-size:0.82rem; color:#aaa;">Publicado en<br><strong style="color:var(--text);">&lt;3 segundos</strong></div>
+      <div style="font-size:0.82rem; color:#aaa;" data-i18n="tl5">Publicado en<br><strong style="color:var(--text);">&lt;3 segundos</strong></div>
     </div>
   </div>
-
 </section>
 
 <!-- DEMO -->
 <section class="demo-section reveal">
-  <p class="section-label">Demo en vivo</p>
-  <h2>Así trabaja la IA<br>por ti.</h2>
+  <p class="section-label" data-i18n="demo_label">Demo en vivo</p>
+  <h2 data-i18n="demo_h2">Así trabaja la IA<br>por ti.</h2>
   <div class="demo-wrapper">
     <div class="demo-bar">
       <div class="dot" style="background:#ff5f57"></div>
       <div class="dot" style="background:#febc2e"></div>
       <div class="dot" style="background:#28c840"></div>
-      <span>ReplyAI · Panel de respuestas</span>
+      <span data-i18n="demo_bar">ReplyAI · Panel de respuestas</span>
     </div>
-    <div class="demo-content">
-      <div>
-        <div class="demo-col-label">💬 Comentarios recibidos</div>
-        <div class="comment-bubble">
-          <div class="user">@mariafitness_23</div>
-          Qué ejercicio me recomiendas para eliminar la grasa del abdomen?
-        </div>
-        <div class="comment-bubble">
-          <div class="user">@carlos_running</div>
-          Cuánto tiempo tardaste en ver resultados siguiendo esta rutina?
-        </div>
-        <div class="comment-bubble">
-          <div class="user">@lucia.yoga</div>
-          Me encanta tu contenido!! Tienes algún plan de entrenamiento para principiantes?
-        </div>
-      </div>
-      <div>
-        <div class="demo-col-label">⚡ Respuestas generadas por IA</div>
-        <div class="reply-bubble">
-          ¡Hola Maria! El mejor combo es cardio HIIT + plancha isométrica. Pero ojo, la dieta es el 70% del trabajo 😄 Te dejo un vídeo esta semana con mi rutina completa!
-        </div>
-        <div class="reply-bubble">
-          ¡Buena pregunta Carlos! A las 3 semanas noté más energía, a los 2 meses cambio visible. La constancia lo es todo 💪 ¿Llevas mucho tiempo entrenando?
-        </div>
-        <div class="typing"><span></span><span></span><span></span></div>
-      </div>
+    <div style="padding: 2rem; display: flex; flex-direction: column; gap: 0.8rem;">
+      <div class="demo-col-label" data-i18n="demo_col1">💬 Comentarios recibidos</div>
+
+      <div class="comment-bubble"><div class="user">@mariafitness_23</div><span data-i18n="demo_c1">Qué ejercicio me recomiendas para eliminar la grasa del abdomen?</span></div>
+      <div class="reply-bubble" data-i18n="demo_r1">¡Hola Maria! El mejor combo es cardio HIIT + plancha isométrica. Pero ojo, la dieta es el 70% del trabajo 😄 Te dejo un vídeo esta semana con mi rutina completa!</div>
+
+      <div class="comment-bubble"><div class="user">@carlos_running</div><span data-i18n="demo_c2">Cuánto tiempo tardaste en ver resultados siguiendo esta rutina?</span></div>
+      <div class="reply-bubble" data-i18n="demo_r2">¡Buena pregunta Carlos! A las 3 semanas noté más energía, a los 2 meses cambio visible. La constancia lo es todo 💪 ¿Llevas mucho tiempo entrenando?</div>
+
+      <div class="comment-bubble"><div class="user">@lucia.yoga</div><span data-i18n="demo_c3">Me encanta tu contenido!! Tienes algún plan de entrenamiento para principiantes?</span></div>
+      <div class="reply-bubble" data-i18n="demo_r3">¡Lucía qué alegría! 🙌 Sí, tengo una guía para principiantes que acabo de actualizar. Te la mando por DM y la subo esta semana al perfil!</div>
     </div>
   </div>
 </section>
 
 <!-- KNOWLEDGE FEATURE -->
 <section class="section reveal" style="background: var(--surface);">
-  <p class="section-label">Siempre tiene la respuesta</p>
-  <h2>La IA que conoce<br>tu negocio <em>por dentro.</em></h2>
-  <p style="color:#888; max-width:520px; margin-bottom: 3.5rem;">No es una IA genérica. Es una IA entrenada con tu información, tu tono y tus productos. Combinada con todo lo que ya sabe del mundo.</p>
-
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; max-width:900px;">
-
+  <p class="section-label" data-i18n="kn_label">Siempre tiene la respuesta</p>
+  <h2 data-i18n="kn_h2">La IA que conoce<br>tu negocio <em>por dentro.</em></h2>
+  <p style="color:#888; max-width:520px; margin-bottom: 3.5rem;" data-i18n="kn_sub">No es una IA genérica. Es una IA entrenada con tu información, tu tono y tus productos. Combinada con todo lo que ya sabe del mundo.</p>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; max-width:900px;" class="knowledge-grid">
     <div style="background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem;">
       <div style="font-size:2rem; margin-bottom:1rem;">📂</div>
-      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;">Tú le das tu información</h3>
-      <p style="font-size:0.85rem; color:#777; line-height:1.7; margin-bottom:1.2rem;">Sube una vez todo lo que necesita saber: tus productos, precios, promociones, políticas de envío, FAQs… La IA lo lee y lo usa para responder con precisión.</p>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;" data-i18n="kn1_h">Tú le das tu información</h3>
+      <p style="font-size:0.85rem; color:#777; line-height:1.7; margin-bottom:1.2rem;" data-i18n="kn1_p">Sube una vez todo lo que necesita saber: tus productos, precios, promociones, políticas de envío, FAQs…</p>
       <div style="display:flex; flex-direction:column; gap:0.5rem;">
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>📄</span> Catálogo de productos y precios</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>🚚</span> Política de envíos y devoluciones</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>🎯</span> Promociones y descuentos activos</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>❓</span> Preguntas frecuentes de tu sector</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn1_i1">📄 Catálogo de productos y precios</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn1_i2">🚚 Política de envíos y devoluciones</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn1_i3">🎯 Promociones y descuentos activos</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn1_i4">❓ Preguntas frecuentes de tu sector</div>
       </div>
     </div>
-
     <div style="background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem;">
       <div style="font-size:2rem; margin-bottom:1rem;">🌐</div>
-      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;">La IA ya sabe el resto</h3>
-      <p style="font-size:0.85rem; color:#777; line-height:1.7; margin-bottom:1.2rem;">Para todo lo que no está en tu documentación, Claude usa su conocimiento general: tendencias del sector, consejos, curiosidades, contexto cultural. Responde con naturalidad, nunca improvisa datos de tu negocio.</p>
+      <h3 style="font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:0.8rem;" data-i18n="kn2_h">La IA ya sabe el resto</h3>
+      <p style="font-size:0.85rem; color:#777; line-height:1.7; margin-bottom:1.2rem;" data-i18n="kn2_p">Para todo lo que no está en tu documentación, Claude usa su conocimiento general.</p>
       <div style="display:flex; flex-direction:column; gap:0.5rem;">
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>💡</span> Consejos generales del sector</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>📱</span> Tendencias y contexto de TikTok</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>😄</span> Respuestas naturales y con personalidad</div>
-        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;"><span>🌍</span> Conocimiento actualizado del mundo</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn2_i1">💡 Consejos generales del sector</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn2_i2">📱 Tendencias y contexto de TikTok</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn2_i3">😄 Respuestas naturales y con personalidad</div>
+        <div style="background:var(--surface2); border-radius:8px; padding:0.6rem 0.9rem; font-size:0.8rem; color:#aaa; display:flex; align-items:center; gap:0.6rem;" data-i18n="kn2_i4">🌍 Conocimiento actualizado del mundo</div>
       </div>
     </div>
-
   </div>
-
-  <!-- FLOW VISUAL -->
   <div style="margin-top:1.5rem; max-width:900px; background:var(--bg); border:1px solid var(--border); border-radius:18px; padding:2rem; display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items:center; gap:1rem; text-align:center;">
-    <div>
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">💬</div>
-      <div style="font-size:0.78rem; color:#aaa; line-height:1.6;">Comentario<br>en TikTok</div>
-    </div>
+    <div><div style="font-size:1.5rem; margin-bottom:0.5rem;">💬</div><div style="font-size:0.78rem; color:#aaa; line-height:1.6;" data-i18n="kn_flow1">Comentario<br>en TikTok</div></div>
     <div style="color:var(--accent); font-size:1.2rem;">→</div>
-    <div>
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">🧠</div>
-      <div style="font-size:0.78rem; color:#aaa; line-height:1.6;">IA combina tu info<br>+ conocimiento propio</div>
-    </div>
+    <div><div style="font-size:1.5rem; margin-bottom:0.5rem;">🧠</div><div style="font-size:0.78rem; color:#aaa; line-height:1.6;" data-i18n="kn_flow2">IA combina tu info<br>+ conocimiento propio</div></div>
     <div style="color:var(--accent); font-size:1.2rem;">→</div>
-    <div>
-      <div style="font-size:1.5rem; margin-bottom:0.5rem;">✅</div>
-      <div style="font-size:0.78rem; color:#aaa; line-height:1.6;">Respuesta perfecta<br>publicada al instante</div>
-    </div>
+    <div><div style="font-size:1.5rem; margin-bottom:0.5rem;">✅</div><div style="font-size:0.78rem; color:#aaa; line-height:1.6;" data-i18n="kn_flow3">Respuesta perfecta<br>publicada al instante</div></div>
   </div>
-
-  <!-- ALERT NOTE -->
-  <div style="margin-top:1rem; max-width:900px; background:rgba(255,45,85,0.05); border:1px solid rgba(255,45,85,0.15); border-radius:14px; padding:1.2rem 1.8rem; display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
+  <div style="margin-top:1rem; max-width:900px; background:rgba(232,41,74,0.05); border:1px solid rgba(232,41,74,0.15); border-radius:14px; padding:1.2rem 1.8rem; display:flex; align-items:flex-start; gap:1rem; flex-wrap:wrap;">
     <div style="font-size:1.2rem; padding-top:0.1rem;">🔔</div>
     <div style="font-size:0.83rem; color:#888; line-height:1.7;">
-      <strong style="color:var(--text);">¿Y si hay algo muy específico que necesita tu confirmación?</strong><br>
-      En casos excepcionales (quejas delicadas, preguntas con datos que no has subido aún), te avisamos por <strong style="color:#25d366;">WhatsApp</strong> o <strong style="color:#ff8c69;">email</strong> para que respondas tú. Así la IA aprende y la próxima vez lo resuelve sola.
+      <strong style="color:var(--text);" data-i18n="kn_alert_h">¿Y si hay algo muy específico que necesita tu confirmación?</strong><br>
+      <span data-i18n="kn_alert_p">En casos excepcionales, te avisamos por <strong style="color:#25d366;">WhatsApp</strong> o <strong style="color:#ff8c69;">email</strong>.</span>
     </div>
   </div>
-
 </section>
 
 <!-- LANGUAGES -->
 <section class="section reveal" style="background: var(--bg);">
-  <p class="section-label">Idiomas disponibles</p>
-  <h2>Responde a tus seguidores<br>en su propio idioma.</h2>
-  <p style="color:#888; max-width:500px; margin-top:0.8rem; margin-bottom: 3.5rem;">ReplyAI detecta automáticamente el idioma de cada comentario y responde en el mismo. Sin configuración adicional.</p>
-
+  <p class="section-label" data-i18n="lang_label">Idiomas disponibles</p>
+  <h2 data-i18n="lang_h2">Responde a tus seguidores<br>en su propio idioma.</h2>
+  <p style="color:#888; max-width:500px; margin-top:0.8rem; margin-bottom: 3.5rem;" data-i18n="lang_sub">ReplyAI detecta automáticamente el idioma de cada comentario y responde en el mismo. Sin configuración adicional.</p>
   <div class="lang-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 800px;">
-
-    <!-- ENGLISH -->
     <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <span style="flex-shrink:0;">
-        <!-- UK flag SVG -->
-        <svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;">
-          <rect width="60" height="40" fill="#012169"/>
-          <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/>
-          <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/>
-          <path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/>
-          <path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/>
-        </svg>
-      </span>
-      <div>
-        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">English</div>
-        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Natural replies in English for international audiences.</div>
-      </div>
+      <span style="flex-shrink:0;"><svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="5"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="7"/></svg></span>
+      <div><div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">English</div><div style="font-size:0.78rem; color:var(--muted); line-height:1.5;" data-i18n="lang_en_desc">Natural replies in English for international audiences.</div></div>
     </div>
-
-    <!-- ESPAÑOL -->
     <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <span style="flex-shrink:0;">
-        <!-- Spain flag SVG -->
-        <svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;">
-          <rect width="60" height="40" fill="#c60b1e"/>
-          <rect y="10" width="60" height="20" fill="#ffc400"/>
-        </svg>
-      </span>
-      <div>
-        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Español</div>
-        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Comunicación fluida con toda la comunidad hispanohablante.</div>
-      </div>
+      <span style="flex-shrink:0;"><svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;"><rect width="60" height="40" fill="#c60b1e"/><rect y="10" width="60" height="20" fill="#ffc400"/></svg></span>
+      <div><div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Español</div><div style="font-size:0.78rem; color:var(--muted); line-height:1.5;" data-i18n="lang_es_desc">Comunicación fluida con toda la comunidad hispanohablante.</div></div>
     </div>
-
-    <!-- CATALÀ -->
     <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; display: flex; align-items: center; gap: 1.2rem; transition: border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(232,41,74,0.4)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <span style="flex-shrink:0;">
-        <!-- Senyera SVG -->
-        <svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;">
-          <rect width="60" height="40" fill="#FCDD09"/>
-          <rect y="0"   width="60" height="6.5" fill="#DA121A"/>
-          <rect y="13"  width="60" height="6.5" fill="#DA121A"/>
-          <rect y="26"  width="60" height="6.5" fill="#DA121A"/>
-          <rect y="33.5" width="60" height="6.5" fill="#DA121A"/>
-        </svg>
-      </span>
-      <div>
-        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Català</div>
-        <div style="font-size:0.78rem; color:var(--muted); line-height:1.5;">Respostes properes per als teus seguidors catalanoparlants.</div>
-      </div>
+      <span style="flex-shrink:0;"><svg width="36" height="26" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" style="border-radius:4px; display:block;"><rect width="60" height="40" fill="#FCDD09"/><rect y="0" width="60" height="6.5" fill="#DA121A"/><rect y="13" width="60" height="6.5" fill="#DA121A"/><rect y="26" width="60" height="6.5" fill="#DA121A"/><rect y="33.5" width="60" height="6.5" fill="#DA121A"/></svg></span>
+      <div><div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">Català</div><div style="font-size:0.78rem; color:var(--muted); line-height:1.5;" data-i18n="lang_ca_desc">Respostes properes per als teus seguidors catalanoparlants.</div></div>
     </div>
-
   </div>
-
   <div style="margin-top: 2rem; max-width: 800px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.8rem; display: flex; align-items: center; gap: 1rem;">
     <span style="color: var(--accent); font-size: 1rem; flex-shrink:0;">ℹ</span>
-    <p style="font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin: 0;">El idioma se detecta automáticamente en cada comentario. No es necesario configurar nada por tu parte.</p>
+    <p style="font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin: 0;" data-i18n="lang_note">El idioma se detecta automáticamente en cada comentario. No es necesario configurar nada por tu parte.</p>
   </div>
-
 </section>
 
 <!-- PRICING -->
 <section class="pricing-section reveal" id="pricing">
-  <p class="section-label">Precios</p>
-  <h2>Elige tu plan.<br>Sin letra pequeña.</h2>
-  <p style="color:#888; max-width:480px; margin-top:0.8rem;">Prueba 15 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
-
+  <p class="section-label" data-i18n="price_label">Precios</p>
+  <h2 data-i18n="price_h2">Elige tu plan.<br>Sin letra pequeña.</h2>
+  <p style="color:#888; max-width:480px; margin-top:0.8rem;" data-i18n="price_sub">Prueba 15 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
   <div class="pricing-grid" style="margin-top: 4rem;">
-
-    <!-- PLAN BÁSICO -->
     <div class="plan">
-      <div class="plan-name">Básico</div>
+      <div class="plan-name" data-i18n="plan1_name">Básico</div>
       <div class="plan-price"><sup>€</sup>9<small style="font-size:1.5rem">.99</small></div>
-      <div class="plan-period">/ mes · después de 15 días gratis</div>
+      <div class="plan-period" data-i18n="plan_period">/ mes · después de 15 días gratis</div>
       <ul class="plan-features">
-        <li>500 respuestas / mes</li>
-        <li>1 cuenta TikTok conectada</li>
-        <li>Modo revisión manual y automático</li>
-        <li>Personalización de tono de marca</li>
-        <li>Soporte por email</li>
+        <li data-i18n="plan1_f1">500 respuestas / mes</li>
+        <li data-i18n="plan1_f2">1 cuenta TikTok conectada</li>
+        <li data-i18n="plan1_f3">Modo revisión manual y automático</li>
+        <li data-i18n="plan1_f4">Personalización de tono de marca</li>
+        <li data-i18n="plan1_f5">Soporte por email</li>
       </ul>
-      <button class="plan-btn">Empezar gratis →</button>
-      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
+      <button class="plan-btn" data-i18n="plan_cta">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;" data-i18n="plan_nocredit">Sin tarjeta de crédito.</p>
     </div>
-
-    <!-- PLAN MEJORADO -->
     <div class="plan featured">
-      <div class="plan-badge">Más popular</div>
-      <div class="plan-name">Mejorado</div>
+      <div class="plan-badge" data-i18n="plan_popular">Más popular</div>
+      <div class="plan-name" data-i18n="plan2_name">Mejorado</div>
       <div class="plan-price"><sup>€</sup>24<small style="font-size:1.5rem">.99</small></div>
-      <div class="plan-period">/ mes · después de 15 días gratis</div>
+      <div class="plan-period" data-i18n="plan_period">/ mes · después de 15 días gratis</div>
       <ul class="plan-features">
-        <li>2.000 respuestas / mes</li>
-        <li>2 cuentas TikTok conectadas</li>
-        <li>Modo manual y automático</li>
-        <li>Personalización de tono de marca</li>
-        <li>Historial y análisis de comentarios</li>
-        <li>Alertas por WhatsApp y email</li>
-        <li>Soporte por email y chat</li>
+        <li data-i18n="plan2_f1">2.000 respuestas / mes</li>
+        <li data-i18n="plan2_f2">2 cuentas TikTok conectadas</li>
+        <li data-i18n="plan2_f3">Modo manual y automático</li>
+        <li data-i18n="plan2_f4">Personalización de tono de marca</li>
+        <li data-i18n="plan2_f5">Historial y análisis de comentarios</li>
+        <li data-i18n="plan2_f6">Alertas por WhatsApp y email</li>
+        <li data-i18n="plan2_f7">Soporte por email y chat</li>
       </ul>
-      <button class="plan-btn">Empezar gratis →</button>
-      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
+      <button class="plan-btn" data-i18n="plan_cta">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;" data-i18n="plan_nocredit">Sin tarjeta de crédito.</p>
     </div>
-
-    <!-- PLAN PREMIUM -->
     <div class="plan">
-      <div class="plan-name">Premium</div>
+      <div class="plan-name" data-i18n="plan3_name">Premium</div>
       <div class="plan-price"><sup>€</sup>39<small style="font-size:1.5rem">.99</small></div>
-      <div class="plan-period">/ mes · después de 15 días gratis</div>
+      <div class="plan-period" data-i18n="plan_period">/ mes · después de 15 días gratis</div>
       <ul class="plan-features">
-        <li>3.500 respuestas / mes</li>
-        <li>Hasta 3 cuentas TikTok</li>
-        <li>Modo manual y automático</li>
-        <li>Personalización de tono de marca</li>
-        <li>Analytics avanzado + reportes</li>
-        <li>Alertas por WhatsApp y email</li>
-        <li>Respuestas prioritarias (&lt;30 seg)</li>
-        <li>Soporte prioritario</li>
+        <li data-i18n="plan3_f1">3.500 respuestas / mes</li>
+        <li data-i18n="plan3_f2">Hasta 3 cuentas TikTok</li>
+        <li data-i18n="plan3_f3">Modo manual y automático</li>
+        <li data-i18n="plan3_f4">Personalización de tono de marca</li>
+        <li data-i18n="plan3_f5">Analytics avanzado + reportes</li>
+        <li data-i18n="plan3_f6">Alertas por WhatsApp y email</li>
+        <li data-i18n="plan3_f7">Respuestas prioritarias (&lt;30 seg)</li>
+        <li data-i18n="plan3_f8">Soporte prioritario</li>
       </ul>
-      <button class="plan-btn">Empezar gratis →</button>
-      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;">Sin tarjeta de crédito.</p>
+      <button class="plan-btn" data-i18n="plan_cta">Empezar gratis →</button>
+      <p style="text-align:center; font-size:0.75rem; color:var(--muted); margin-top:1rem;" data-i18n="plan_nocredit">Sin tarjeta de crédito.</p>
     </div>
-
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section reveal">
-  <p class="section-label">FAQ</p>
-  <h2>Dudas frecuentes.</h2>
+  <p class="section-label" data-i18n="faq_label">FAQ</p>
+  <h2 data-i18n="faq_h2">Dudas frecuentes.</h2>
   <div class="faq-list">
     <div class="faq-item">
-      <div class="faq-q">¿La IA suena natural o robótica? <span class="arrow">▾</span></div>
-      <div class="faq-a">Usa el modelo Claude de Anthropic, uno de los más avanzados del mundo. Aprende tu tono de las primeras respuestas y cada vez suena más a ti. Muchos seguidores no notan la diferencia.</div>
+      <div class="faq-q"><span data-i18n="faq1_q">¿La IA suena natural o robótica?</span> <span class="arrow">▾</span></div>
+      <div class="faq-a" data-i18n="faq1_a">Usa el modelo Claude de Anthropic, uno de los más avanzados del mundo. Aprende tu tono de las primeras respuestas y cada vez suena más a ti. Muchos seguidores no notan la diferencia.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Puedo revisar las respuestas antes de que se publiquen? <span class="arrow">▾</span></div>
-      <div class="faq-a">Sí. El modo revisión manual (activo por defecto) te muestra cada respuesta y la apruebas con un clic. El modo automático existe para cuando ya confíes 100% en la IA.</div>
+      <div class="faq-q"><span data-i18n="faq2_q">¿Puedo revisar las respuestas antes de que se publiquen?</span> <span class="arrow">▾</span></div>
+      <div class="faq-a" data-i18n="faq2_a">Sí. El modo revisión manual (activo por defecto) te muestra cada respuesta y la apruebas con un clic. El modo automático existe para cuando ya confíes 100% en la IA.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Es seguro conectar mi cuenta de TikTok? <span class="arrow">▾</span></div>
-      <div class="faq-a">Usamos OAuth oficial de TikTok. Nunca almacenamos tu contraseña. Puedes revocar el acceso en cualquier momento desde tu configuración de TikTok.</div>
+      <div class="faq-q"><span data-i18n="faq3_q">¿Es seguro conectar mi cuenta de TikTok?</span> <span class="arrow">▾</span></div>
+      <div class="faq-a" data-i18n="faq3_a">Usamos OAuth oficial de TikTok. Nunca almacenamos tu contraseña. Puedes revocar el acceso en cualquier momento desde tu configuración de TikTok.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Qué pasa si supero el límite de respuestas? <span class="arrow">▾</span></div>
-      <div class="faq-a">Te avisamos cuando estés al 80%. Puedes subir de plan en cualquier momento sin perder configuración ni historial.</div>
+      <div class="faq-q"><span data-i18n="faq4_q">¿Qué pasa si supero el límite de respuestas?</span> <span class="arrow">▾</span></div>
+      <div class="faq-a" data-i18n="faq4_a">Te avisamos cuando estés al 80%. Puedes subir de plan en cualquier momento sin perder configuración ni historial.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Funciona en otros idiomas? <span class="arrow">▾</span></div>
-      <div class="faq-a">Sí. Claude detecta automáticamente el idioma del comentario y responde en el mismo idioma, aunque tu cuenta esté configurada en español.</div>
+      <div class="faq-q"><span data-i18n="faq5_q">¿Funciona en otros idiomas?</span> <span class="arrow">▾</span></div>
+      <div class="faq-a" data-i18n="faq5_a">Sí. Claude detecta automáticamente el idioma del comentario y responde en el mismo idioma, aunque tu cuenta esté configurada en español.</div>
     </div>
   </div>
 </section>
@@ -999,15 +929,15 @@
 <!-- FINAL CTA -->
 <section class="cta-section reveal">
   <div class="cta-bg"></div>
-  <h2>Deja de responder.<br><em>Empieza a crear.</em></h2>
-  <p>14 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
-  <a href="#pricing" class="btn-primary">Probar ReplyAI gratis →</a>
+  <h2 data-i18n="cta_h2">Deja de responder.<br><em>Empieza a crear.</em></h2>
+  <p data-i18n="cta_sub">14 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.</p>
+  <a href="#pricing" class="btn-primary" data-i18n="cta_btn">Probar ReplyAI gratis →</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="logo">Reply<span>AI</span></div>
-  <span>© 2025 ReplyAI · Hecho con Claude AI</span>
+  <span data-i18n="footer_copy">© 2025 ReplyAI · Hecho con Claude AI</span>
   <span>Privacidad · Términos · <a href="mailto:replyaiiacat@gmail.com" style="color:var(--muted); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">replyaiiacat@gmail.com</a></span>
 </footer>
 
@@ -1015,48 +945,425 @@
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-
     <div id="modalForm">
-      <h3>Empieza gratis 15 días</h3>
+      <h3 data-i18n="modal_h3">Empieza gratis 15 días</h3>
       <div class="modal-plan-badge" id="modalPlanName">Plan Básico</div>
-      <p>Sin tarjeta de crédito. Cancela cuando quieras. Te contactaremos en menos de 24h.</p>
-
+      <p data-i18n="modal_p">Sin tarjeta de crédito. Cancela cuando quieras. Te contactaremos en menos de 24h.</p>
       <form id="contactForm">
         <div class="form-group">
-          <label>Nombre completo</label>
-          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <label data-i18n="modal_name_label">Nombre completo</label>
+          <input type="text" name="nombre" placeholder="Tu nombre" data-i18n="modal_name_ph" required>
         </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" name="email" placeholder="tu@email.com" required>
+          <label data-i18n="modal_email_label">Email</label>
+          <input type="email" name="email" placeholder="tu@email.com" data-i18n="modal_email_ph" required>
         </div>
         <div class="form-group">
-          <label>Teléfono</label>
-          <input type="tel" name="telefono" placeholder="+34 600 000 000" required>
+          <label data-i18n="modal_phone_label">Teléfono</label>
+          <input type="tel" name="telefono" placeholder="+34 600 000 000" data-i18n="modal_phone_ph" required>
         </div>
         <input type="hidden" name="plan" id="formPlan" value="Básico">
         <input type="hidden" name="_subject" id="formSubject" value="🚀 Nuevo lead ReplyAI — Plan Básico">
-        <button type="submit" class="modal-submit" id="submitBtn">Quiero empezar gratis →</button>
+        <button type="submit" class="modal-submit" id="submitBtn" data-i18n="modal_submit">Quiero empezar gratis →</button>
       </form>
     </div>
-
     <div class="modal-success" id="modalSuccess">
       <div class="check">✅</div>
-      <h4>¡Recibido!</h4>
-      <p>Gracias por tu interés. Te contactaremos en menos de 24h en el email que nos has dejado.</p>
+      <h4 data-i18n="modal_ok_h">¡Recibido!</h4>
+      <p data-i18n="modal_ok_p">Gracias por tu interés. Te contactaremos en menos de 24h en el email que nos has dejado.</p>
     </div>
   </div>
 </div>
 
 <script>
-  // Reveal on scroll
+  // ── TRANSLATIONS ──
+  const i18n = {
+    es: {
+      nav_cta: 'Ver planes →',
+      hero_h1: 'Responde<br>comentarios<br><em>sin parar.</em>',
+      hero_sub: 'Tu marca siempre activa. La IA responde los comentarios de TikTok con tu tono, en segundos. Tú solo creas contenido.',
+      hero_cta1: 'Empieza gratis 14 días',
+      hero_cta2: 'Ver cómo funciona ↓',
+      stat1: 'Tasa de satisfacción',
+      stat2: 'Tiempo ahorrado de media',
+      prob_label: 'El problema',
+      prob_h2: 'Crear contenido es solo<br>la mitad del trabajo.',
+      prob_sub: 'La otra mitad son los comentarios. Y ahí es donde pierdes horas que deberías estar grabando.',
+      prob1_h: 'Horas perdidas respondiendo',
+      prob1_p: 'Los creadores pasan de media 2-3 horas diarias respondiendo comentarios repetitivos.',
+      prob2_h: 'Comentarios sin respuesta = menos alcance',
+      prob2_p: 'El algoritmo de TikTok premia la interacción. Ignorar comentarios penaliza tu visibilidad.',
+      prob3_h: 'Imposible escalar',
+      prob3_p: 'Cuanto más creces, más comentarios. Y el volumen se vuelve inmanejable manualmente.',
+      prob4_h: 'Tono inconsistente',
+      prob4_p: 'Cuando respondes a las 2am estás agotado. La IA siempre responde en tu mejor versión.',
+      how_label: 'Cómo funciona',
+      how_h2: '3 pasos. Una vez.<br>Para siempre.',
+      how_sub: 'Configuras todo en menos de 10 minutos. Después, la IA trabaja por ti 24/7 sin que tengas que hacer nada más.',
+      step1_h: 'Conecta tu TikTok',
+      step1_p: 'Un clic. Vinculamos tu cuenta con OAuth oficial. Seguro, sin contraseñas, revocable en cualquier momento.',
+      step1_c1: 'Conexión segura OAuth', step1_c2: 'Sin guardar contraseñas', step1_c3: 'Listo en 60 segundos',
+      step2_h: 'Define tu voz',
+      step2_p: '¿Eres cercano, gracioso, profesional? Configura tu tono y sube tu información una sola vez. La IA lo recuerda para siempre.',
+      step2_c1: 'Tono y personalidad de marca', step2_c2: 'Sube tu catálogo y FAQs', step2_c3: 'Aprende de tus respuestas',
+      step3_h: 'La IA responde sola',
+      step3_p: 'Claude genera respuestas en segundos, con tu tono exacto. Revísalas con un clic o activa el modo automático.',
+      step3_c1: 'Respuesta en menos de 3 segundos', step3_c2: 'Modo manual o automático', step3_c3: '24/7 sin que hagas nada',
+      tl1: 'Comentario<br>entra en TikTok', tl2: 'ReplyAI lo<br>detecta al instante', tl3: 'Claude genera<br>la respuesta', tl4: 'Tú apruebas<br>(o va solo)', tl5: 'Publicado en<br><strong>&lt;3 segundos</strong>',
+      demo_label: 'Demo en vivo',
+      demo_h2: 'Así trabaja la IA<br>por ti.',
+      demo_bar: 'ReplyAI · Panel de respuestas',
+      demo_col1: '💬 Comentarios recibidos',
+      demo_col2: '⚡ Respuestas generadas por IA',
+      demo_c1: 'Qué ejercicio me recomiendas para eliminar la grasa del abdomen?',
+      demo_c2: 'Cuánto tiempo tardaste en ver resultados siguiendo esta rutina?',
+      demo_c3: 'Me encanta tu contenido!! Tienes algún plan de entrenamiento para principiantes?',
+      demo_r1: '¡Hola Maria! El mejor combo es cardio HIIT + plancha isométrica. Pero ojo, la dieta es el 70% del trabajo 😄 Te dejo un vídeo esta semana con mi rutina completa!',
+      demo_r2: '¡Buena pregunta Carlos! A las 3 semanas noté más energía, a los 2 meses cambio visible. La constancia lo es todo 💪 ¿Llevas mucho tiempo entrenando?',
+      demo_r3: '¡Lucía qué alegría! 🙌 Sí, tengo una guía para principiantes que acabo de actualizar. Te la mando por DM y la subo esta semana al perfil!',
+      kn_label: 'Siempre tiene la respuesta',
+      kn_h2: 'La IA que conoce<br>tu negocio <em>por dentro.</em>',
+      kn_sub: 'No es una IA genérica. Es una IA entrenada con tu información, tu tono y tus productos. Combinada con todo lo que ya sabe del mundo.',
+      kn1_h: 'Tú le das tu información',
+      kn1_p: 'Sube una vez todo lo que necesita saber: tus productos, precios, promociones, políticas de envío, FAQs… La IA lo lee y lo usa para responder con precisión.',
+      kn1_i1: '📄 Catálogo de productos y precios', kn1_i2: '🚚 Política de envíos y devoluciones', kn1_i3: '🎯 Promociones y descuentos activos', kn1_i4: '❓ Preguntas frecuentes de tu sector',
+      kn2_h: 'La IA ya sabe el resto',
+      kn2_p: 'Para todo lo que no está en tu documentación, Claude usa su conocimiento general: tendencias del sector, consejos, curiosidades, contexto cultural. Responde con naturalidad, nunca improvisa datos de tu negocio.',
+      kn2_i1: '💡 Consejos generales del sector', kn2_i2: '📱 Tendencias y contexto de TikTok', kn2_i3: '😄 Respuestas naturales y con personalidad', kn2_i4: '🌍 Conocimiento actualizado del mundo',
+      kn_flow1: 'Comentario<br>en TikTok', kn_flow2: 'IA combina tu info<br>+ conocimiento propio', kn_flow3: 'Respuesta perfecta<br>publicada al instante',
+      kn_alert_h: '¿Y si hay algo muy específico que necesita tu confirmación?',
+      kn_alert_p: 'En casos excepcionales (quejas delicadas, preguntas con datos que no has subido aún), te avisamos por <strong style="color:#25d366;">WhatsApp</strong> o <strong style="color:#ff8c69;">email</strong> para que respondas tú. Así la IA aprende y la próxima vez lo resuelve sola.',
+      lang_label: 'Idiomas disponibles',
+      lang_h2: 'Responde a tus seguidores<br>en su propio idioma.',
+      lang_sub: 'ReplyAI detecta automáticamente el idioma de cada comentario y responde en el mismo. Sin configuración adicional.',
+      lang_note: 'El idioma se detecta automáticamente en cada comentario. No es necesario configurar nada por tu parte.',
+      lang_en_desc: 'Respuestas naturales en inglés para audiencias internacionales.',
+      lang_es_desc: 'Comunicación fluida con toda la comunidad hispanohablante.',
+      lang_ca_desc: 'Respostes properes per als teus seguidors catalanoparlants.',
+      price_label: 'Precios',
+      price_h2: 'Elige tu plan.<br>Sin letra pequeña.',
+      price_sub: 'Prueba 15 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.',
+      plan_popular: 'Más popular',
+      plan_period: '/ mes · después de 15 días gratis',
+      plan_nocredit: 'Sin tarjeta de crédito.',
+      plan_cta: 'Empezar gratis →',
+      plan1_name: 'Básico', plan1_f1: '500 respuestas / mes', plan1_f2: '1 cuenta TikTok conectada', plan1_f3: 'Modo revisión manual y automático', plan1_f4: 'Personalización de tono de marca', plan1_f5: 'Soporte por email',
+      plan2_name: 'Mejorado', plan2_f1: '2.000 respuestas / mes', plan2_f2: '2 cuentas TikTok conectadas', plan2_f3: 'Modo manual y automático', plan2_f4: 'Personalización de tono de marca', plan2_f5: 'Historial y análisis de comentarios', plan2_f6: 'Alertas por WhatsApp y email', plan2_f7: 'Soporte por email y chat',
+      plan3_name: 'Premium', plan3_f1: '3.500 respuestas / mes', plan3_f2: 'Hasta 3 cuentas TikTok', plan3_f3: 'Modo manual y automático', plan3_f4: 'Personalización de tono de marca', plan3_f5: 'Analytics avanzado + reportes', plan3_f6: 'Alertas por WhatsApp y email', plan3_f7: 'Respuestas prioritarias (<30 seg)', plan3_f8: 'Soporte prioritario',
+      faq_label: 'FAQ',
+      faq_h2: 'Dudas frecuentes.',
+      faq1_q: '¿La IA suena natural o robótica?', faq1_a: 'Usa el modelo Claude de Anthropic, uno de los más avanzados del mundo. Aprende tu tono de las primeras respuestas y cada vez suena más a ti. Muchos seguidores no notan la diferencia.',
+      faq2_q: '¿Puedo revisar las respuestas antes de que se publiquen?', faq2_a: 'Sí. El modo revisión manual (activo por defecto) te muestra cada respuesta y la apruebas con un clic. El modo automático existe para cuando ya confíes 100% en la IA.',
+      faq3_q: '¿Es seguro conectar mi cuenta de TikTok?', faq3_a: 'Usamos OAuth oficial de TikTok. Nunca almacenamos tu contraseña. Puedes revocar el acceso en cualquier momento desde tu configuración de TikTok.',
+      faq4_q: '¿Qué pasa si supero el límite de respuestas?', faq4_a: 'Te avisamos cuando estés al 80%. Puedes subir de plan en cualquier momento sin perder configuración ni historial.',
+      faq5_q: '¿Funciona en otros idiomas?', faq5_a: 'Sí. Claude detecta automáticamente el idioma del comentario y responde en el mismo idioma, aunque tu cuenta esté configurada en español.',
+      cta_h2: 'Deja de responder.<br><em>Empieza a crear.</em>',
+      cta_sub: '14 días gratis. Sin tarjeta de crédito. Cancela cuando quieras.',
+      cta_btn: 'Probar ReplyAI gratis →',
+      footer_copy: '© 2025 ReplyAI · Hecho con Claude AI',
+      modal_h3: 'Empieza gratis 15 días',
+      modal_p: 'Sin tarjeta de crédito. Cancela cuando quieras. Te contactaremos en menos de 24h.',
+      modal_name_label: 'Nombre completo', modal_name_ph: 'Tu nombre',
+      modal_email_label: 'Email', modal_email_ph: 'tu@email.com',
+      modal_phone_label: 'Teléfono', modal_phone_ph: '+34 600 000 000',
+      modal_submit: 'Quiero empezar gratis →',
+      modal_ok_h: '¡Recibido!',
+      modal_ok_p: 'Gracias por tu interés. Te contactaremos en menos de 24h en el email que nos has dejado.',
+    },
+    en: {
+      nav_cta: 'View plans →',
+      hero_h1: 'Reply to<br>comments<br><em>non-stop.</em>',
+      hero_sub: 'Your brand always active. AI replies to your TikTok comments in your tone, in seconds. You just create content.',
+      hero_cta1: 'Start free for 14 days',
+      hero_cta2: 'See how it works ↓',
+      stat1: 'Satisfaction rate',
+      stat2: 'Time saved per week',
+      prob_label: 'The problem',
+      prob_h2: 'Creating content is only<br>half the work.',
+      prob_sub: 'The other half is the comments. And that\'s where you lose hours you should be spending creating.',
+      prob1_h: 'Hours lost replying',
+      prob1_p: 'Creators spend an average of 2-3 hours a day replying to repetitive comments.',
+      prob2_h: 'Unanswered comments = less reach',
+      prob2_p: 'TikTok\'s algorithm rewards interaction. Ignoring comments penalises your visibility.',
+      prob3_h: 'Impossible to scale',
+      prob3_p: 'The more you grow, the more comments. The volume becomes unmanageable manually.',
+      prob4_h: 'Inconsistent tone',
+      prob4_p: 'When you reply at 2am you\'re exhausted. The AI always responds as your best self.',
+      how_label: 'How it works',
+      how_h2: '3 steps. Once.<br>Forever.',
+      how_sub: 'Set everything up in under 10 minutes. After that, the AI works for you 24/7 without you doing anything else.',
+      step1_h: 'Connect your TikTok',
+      step1_p: 'One click. We link your account using official OAuth. Secure, no passwords stored, revocable at any time.',
+      step1_c1: 'Secure OAuth connection', step1_c2: 'No passwords stored', step1_c3: 'Ready in 60 seconds',
+      step2_h: 'Define your voice',
+      step2_p: 'Friendly, funny, professional? Set your tone and upload your info once. The AI remembers it forever.',
+      step2_c1: 'Brand tone & personality', step2_c2: 'Upload your catalogue & FAQs', step2_c3: 'Learns from your replies',
+      step3_h: 'AI replies on its own',
+      step3_p: 'Claude generates replies in seconds, in your exact tone. Review them with one click or enable automatic mode.',
+      step3_c1: 'Reply in under 3 seconds', step3_c2: 'Manual or automatic mode', step3_c3: '24/7 without lifting a finger',
+      tl1: 'Comment<br>arrives on TikTok', tl2: 'ReplyAI<br>detects it instantly', tl3: 'Claude generates<br>the reply', tl4: 'You approve<br>(or it goes live)', tl5: 'Published in<br><strong>&lt;3 seconds</strong>',
+      demo_label: 'Live demo',
+      demo_h2: 'This is how the AI<br>works for you.',
+      demo_bar: 'ReplyAI · Reply dashboard',
+      demo_col1: '💬 Incoming comments',
+      demo_col2: '⚡ AI-generated replies',
+      demo_c1: 'What exercise do you recommend to burn belly fat?',
+      demo_c2: 'How long did it take you to see results following this routine?',
+      demo_c3: 'I love your content!! Do you have a training plan for beginners?',
+      demo_r1: 'Hi Maria! The best combo is HIIT cardio + isometric plank. But remember, diet is 70% of the work 😄 I\'ll post a full routine video this week!',
+      demo_r2: 'Great question Carlos! After 3 weeks I noticed more energy, after 2 months visible change. Consistency is everything 💪 How long have you been training?',
+      demo_r3: 'Lucía so happy to hear that! 🙌 Yes, I have a beginner\'s guide I just updated. I\'ll DM it to you and post it on my profile this week!',
+      kn_label: 'Always has an answer',
+      kn_h2: 'The AI that knows<br>your business <em>inside out.</em>',
+      kn_sub: 'Not a generic AI. It\'s trained on your info, your tone and your products — combined with everything it already knows about the world.',
+      kn1_h: 'You give it your information',
+      kn1_p: 'Upload everything it needs to know once: your products, prices, promotions, shipping policies, FAQs… The AI reads it and uses it to reply with precision.',
+      kn1_i1: '📄 Product catalogue & prices', kn1_i2: '🚚 Shipping & returns policy', kn1_i3: '🎯 Active promotions & discounts', kn1_i4: '❓ Sector FAQs',
+      kn2_h: 'The AI already knows the rest',
+      kn2_p: 'For everything not in your docs, Claude uses its general knowledge: industry trends, tips, trivia, cultural context. It replies naturally and never makes up business data.',
+      kn2_i1: '💡 General industry advice', kn2_i2: '📱 TikTok trends & context', kn2_i3: '😄 Natural, personality-driven replies', kn2_i4: '🌍 Up-to-date world knowledge',
+      kn_flow1: 'Comment<br>on TikTok', kn_flow2: 'AI combines your info<br>+ own knowledge', kn_flow3: 'Perfect reply<br>published instantly',
+      kn_alert_h: 'What if something very specific needs your input?',
+      kn_alert_p: 'In exceptional cases (sensitive complaints, questions about data you haven\'t uploaded yet), we alert you via <strong style="color:#25d366;">WhatsApp</strong> or <strong style="color:#ff8c69;">email</strong> so you can reply. The AI learns and handles it alone next time.',
+      lang_label: 'Available languages',
+      lang_h2: 'Reply to your followers<br>in their own language.',
+      lang_sub: 'ReplyAI automatically detects the language of each comment and replies in the same one. No extra setup needed.',
+      lang_note: 'Language is detected automatically on every comment. No configuration needed on your end.',
+      lang_en_desc: 'Natural replies in English for international audiences.',
+      lang_es_desc: 'Smooth communication with the entire Spanish-speaking community.',
+      lang_ca_desc: 'Respostes properes per als teus seguidors catalanoparlants.',
+      price_label: 'Pricing',
+      price_h2: 'Choose your plan.<br>No small print.',
+      price_sub: 'Try free for 15 days. No credit card. Cancel anytime.',
+      plan_popular: 'Most popular',
+      plan_period: '/ month · after 15-day free trial',
+      plan_nocredit: 'No credit card required.',
+      plan_cta: 'Start for free →',
+      plan1_name: 'Basic', plan1_f1: '500 replies / month', plan1_f2: '1 TikTok account connected', plan1_f3: 'Manual & automatic review mode', plan1_f4: 'Brand tone customisation', plan1_f5: 'Email support',
+      plan2_name: 'Standard', plan2_f1: '2,000 replies / month', plan2_f2: '2 TikTok accounts connected', plan2_f3: 'Manual & automatic mode', plan2_f4: 'Brand tone customisation', plan2_f5: 'Comment history & analytics', plan2_f6: 'WhatsApp & email alerts', plan2_f7: 'Email & chat support',
+      plan3_name: 'Premium', plan3_f1: '3,500 replies / month', plan3_f2: 'Up to 3 TikTok accounts', plan3_f3: 'Manual & automatic mode', plan3_f4: 'Brand tone customisation', plan3_f5: 'Advanced analytics + reports', plan3_f6: 'WhatsApp & email alerts', plan3_f7: 'Priority replies (<30 sec)', plan3_f8: 'Priority support',
+      faq_label: 'FAQ',
+      faq_h2: 'Frequently asked questions.',
+      faq1_q: 'Does the AI sound natural or robotic?', faq1_a: 'It uses Anthropic\'s Claude model, one of the most advanced in the world. It learns your tone from the first replies and gets closer to your voice over time. Many followers can\'t tell the difference.',
+      faq2_q: 'Can I review replies before they\'re published?', faq2_a: 'Yes. Manual review mode (on by default) shows you each reply and you approve it with one click. Automatic mode is there for when you fully trust the AI.',
+      faq3_q: 'Is it safe to connect my TikTok account?', faq3_a: 'We use TikTok\'s official OAuth. We never store your password. You can revoke access at any time from your TikTok settings.',
+      faq4_q: 'What happens if I exceed my reply limit?', faq4_a: 'We alert you when you hit 80%. You can upgrade your plan at any time without losing your settings or history.',
+      faq5_q: 'Does it work in other languages?', faq5_a: 'Yes. Claude automatically detects the language of each comment and replies in the same language, even if your account is set to English.',
+      cta_h2: 'Stop replying.<br><em>Start creating.</em>',
+      cta_sub: '14 days free. No credit card. Cancel anytime.',
+      cta_btn: 'Try ReplyAI free →',
+      footer_copy: '© 2025 ReplyAI · Built with Claude AI',
+      modal_h3: 'Start free for 15 days',
+      modal_p: 'No credit card. Cancel anytime. We\'ll contact you within 24h.',
+      modal_name_label: 'Full name', modal_name_ph: 'Your name',
+      modal_email_label: 'Email', modal_email_ph: 'you@email.com',
+      modal_phone_label: 'Phone', modal_phone_ph: '+34 600 000 000',
+      modal_submit: 'I want to start free →',
+      modal_ok_h: 'Got it!',
+      modal_ok_p: 'Thanks for your interest. We\'ll contact you within 24h at the email you provided.',
+    },
+    ca: {
+      nav_cta: 'Veure plans →',
+      hero_h1: 'Respon<br>comentaris<br><em>sense parar.</em>',
+      hero_sub: 'La teva marca sempre activa. La IA respon els comentaris de TikTok amb el teu to, en segons. Tu només crees contingut.',
+      hero_cta1: 'Comença gratis 14 dies',
+      hero_cta2: 'Veure com funciona ↓',
+      stat1: 'Taxa de satisfacció',
+      stat2: 'Temps estalviat de mitjana',
+      prob_label: 'El problema',
+      prob_h2: 'Crear contingut és<br>només la meitat de la feina.',
+      prob_sub: 'L\'altra meitat són els comentaris. I és aquí on perds hores que hauries d\'estar gravant.',
+      prob1_h: 'Hores perdudes responent',
+      prob1_p: 'Els creadors passen de mitjana 2-3 hores al dia responent comentaris repetitius.',
+      prob2_h: 'Comentaris sense resposta = menys abast',
+      prob2_p: 'L\'algoritme de TikTok premia la interacció. Ignorar comentaris penalitza la teva visibilitat.',
+      prob3_h: 'Impossible escalar',
+      prob3_p: 'Com més creixeràs, més comentaris tindràs. El volum es fa inmanejable manualment.',
+      prob4_h: 'To inconsistent',
+      prob4_p: 'Quan respons a les 2am estàs esgotat. La IA sempre respon en la teva millor versió.',
+      how_label: 'Com funciona',
+      how_h2: '3 passos. Un cop.<br>Per sempre.',
+      how_sub: 'Ho configures tot en menys de 10 minuts. Després, la IA treballa per tu 24/7 sense que hagis de fer res més.',
+      step1_h: 'Connecta el teu TikTok',
+      step1_p: 'Un clic. Vinculem el teu compte amb OAuth oficial. Segur, sense contrasenyes, revocable en qualsevol moment.',
+      step1_c1: 'Connexió segura OAuth', step1_c2: 'Sense guardar contrasenyes', step1_c3: 'Llest en 60 segons',
+      step2_h: 'Defineix la teva veu',
+      step2_p: 'Ets proper, divertit, professional? Configura el teu to i puja la teva informació un sol cop. La IA ho recorda per sempre.',
+      step2_c1: 'To i personalitat de marca', step2_c2: 'Puja el teu catàleg i FAQs', step2_c3: 'Aprèn de les teves respostes',
+      step3_h: 'La IA respon sola',
+      step3_p: 'Claude genera respostes en segons, amb el teu to exacte. Revisa-les amb un clic o activa el mode automàtic.',
+      step3_c1: 'Resposta en menys de 3 segons', step3_c2: 'Mode manual o automàtic', step3_c3: '24/7 sense fer res',
+      tl1: 'Comentari<br>arriba a TikTok', tl2: 'ReplyAI ho<br>detecta a l\'instant', tl3: 'Claude genera<br>la resposta', tl4: 'Tu aproves<br>(o va sol)', tl5: 'Publicat en<br><strong>&lt;3 segons</strong>',
+      demo_label: 'Demo en viu',
+      demo_h2: 'Així treballa la IA<br>per tu.',
+      demo_bar: 'ReplyAI · Tauler de respostes',
+      demo_col1: '💬 Comentaris rebuts',
+      demo_col2: '⚡ Respostes generades per IA',
+      demo_c1: 'Quin exercici em recomanes per eliminar el greix de l\'abdomen?',
+      demo_c2: 'Quant de temps vas trigar a veure resultats seguint aquesta rutina?',
+      demo_c3: 'M\'encanta el teu contingut!! Tens algun pla d\'entrenament per a principiants?',
+      demo_r1: 'Hola Maria! La millor combinació és cardio HIIT + planxa isomètrica. Però compte, la dieta és el 70% de la feina 😄 Et deixo un vídeo aquesta setmana amb la meva rutina completa!',
+      demo_r2: 'Bona pregunta Carlos! A les 3 setmanes vaig notar més energia, als 2 mesos canvi visible. La constància ho és tot 💪 Fa molt que entrenes?',
+      demo_r3: 'Lucía quina alegria! 🙌 Sí, tinc una guia per a principiants que acabo d\'actualitzar. Te la mando per DM i la pujo aquesta setmana al perfil!',
+      kn_label: 'Sempre té la resposta',
+      kn_h2: 'La IA que coneix<br>el teu negoci <em>per dins.</em>',
+      kn_sub: 'No és una IA genèrica. És una IA entrenada amb la teva informació, el teu to i els teus productes. Combinada amb tot el que ja sap del món.',
+      kn1_h: 'Tu li dones la teva informació',
+      kn1_p: 'Puja un cop tot el que necessita saber: els teus productes, preus, promocions, polítiques d\'enviament, FAQs… La IA ho llegeix i ho fa servir per respondre amb precisió.',
+      kn1_i1: '📄 Catàleg de productes i preus', kn1_i2: '🚚 Política d\'enviaments i devolucions', kn1_i3: '🎯 Promocions i descomptes actius', kn1_i4: '❓ Preguntes freqüents del teu sector',
+      kn2_h: 'La IA ja sap la resta',
+      kn2_p: 'Per tot el que no és a la teva documentació, Claude usa el seu coneixement general: tendències del sector, consells, curiositats, context cultural. Respon amb naturalitat, mai improvisa dades del teu negoci.',
+      kn2_i1: '💡 Consells generals del sector', kn2_i2: '📱 Tendències i context de TikTok', kn2_i3: '😄 Respostes naturals i amb personalitat', kn2_i4: '🌍 Coneixement actualitzat del món',
+      kn_flow1: 'Comentari<br>a TikTok', kn_flow2: 'IA combina la teva info<br>+ coneixement propi', kn_flow3: 'Resposta perfecta<br>publicada a l\'instant',
+      kn_alert_h: 'I si hi ha alguna cosa molt específica que necessita la teva confirmació?',
+      kn_alert_p: 'En casos excepcionals (queixes delicades, preguntes amb dades que no has pujat), t\'avisem per <strong style="color:#25d366;">WhatsApp</strong> o <strong style="color:#ff8c69;">email</strong> perquè responguis tu. Així la IA aprèn i la propera vegada ho resol sola.',
+      lang_label: 'Idiomes disponibles',
+      lang_h2: 'Respon als teus seguidors<br>en el seu propi idioma.',
+      lang_sub: 'ReplyAI detecta automàticament l\'idioma de cada comentari i respon en el mateix. Sense configuració addicional.',
+      lang_note: 'L\'idioma es detecta automàticament a cada comentari. No cal configurar res per la teva part.',
+      lang_en_desc: 'Respostes naturals en anglès per a audiències internacionals.',
+      lang_es_desc: 'Comunicació fluida amb tota la comunitat hispanoparlant.',
+      lang_ca_desc: 'Respostes properes per als teus seguidors catalanoparlants.',
+      price_label: 'Preus',
+      price_h2: 'Tria el teu pla.<br>Sense lletra petita.',
+      price_sub: 'Prova 15 dies gratis. Sense targeta de crèdit. Cancel·la quan vulguis.',
+      plan_popular: 'Més popular',
+      plan_period: '/ mes · després de 15 dies gratis',
+      plan_nocredit: 'Sense targeta de crèdit.',
+      plan_cta: 'Començar gratis →',
+      plan1_name: 'Bàsic', plan1_f1: '500 respostes / mes', plan1_f2: '1 compte TikTok connectat', plan1_f3: 'Mode revisió manual i automàtic', plan1_f4: 'Personalització de to de marca', plan1_f5: 'Suport per email',
+      plan2_name: 'Millorat', plan2_f1: '2.000 respostes / mes', plan2_f2: '2 comptes TikTok connectats', plan2_f3: 'Mode manual i automàtic', plan2_f4: 'Personalització de to de marca', plan2_f5: 'Historial i anàlisi de comentaris', plan2_f6: 'Alertes per WhatsApp i email', plan2_f7: 'Suport per email i xat',
+      plan3_name: 'Premium', plan3_f1: '3.500 respostes / mes', plan3_f2: 'Fins a 3 comptes TikTok', plan3_f3: 'Mode manual i automàtic', plan3_f4: 'Personalització de to de marca', plan3_f5: 'Analytics avançat + informes', plan3_f6: 'Alertes per WhatsApp i email', plan3_f7: 'Respostes prioritàries (<30 seg)', plan3_f8: 'Suport prioritari',
+      faq_label: 'FAQ',
+      faq_h2: 'Dubtes freqüents.',
+      faq1_q: 'La IA sona natural o robòtica?', faq1_a: 'Usa el model Claude d\'Anthropic, un dels més avançats del món. Aprèn el teu to de les primeres respostes i cada vegada sona més a tu. Molts seguidors no noten la diferència.',
+      faq2_q: 'Puc revisar les respostes abans que es publiquin?', faq2_a: 'Sí. El mode revisió manual (actiu per defecte) et mostra cada resposta i l\'aproves amb un clic. El mode automàtic existeix per quan ja confïs 100% en la IA.',
+      faq3_q: 'És segur connectar el meu compte de TikTok?', faq3_a: 'Usem OAuth oficial de TikTok. Mai emmagatzemem la teva contrasenya. Pots revocar l\'accés en qualsevol moment des de la teva configuració de TikTok.',
+      faq4_q: 'Què passa si supero el límit de respostes?', faq4_a: 'T\'avisem quan estàs al 80%. Pots pujar de pla en qualsevol moment sense perdre configuració ni historial.',
+      faq5_q: 'Funciona en altres idiomes?', faq5_a: 'Sí. Claude detecta automàticament l\'idioma del comentari i respon en el mateix idioma, encara que el teu compte estigui configurat en català.',
+      cta_h2: 'Deixa de respondre.<br><em>Comença a crear.</em>',
+      cta_sub: '14 dies gratis. Sense targeta de crèdit. Cancel·la quan vulguis.',
+      cta_btn: 'Provar ReplyAI gratis →',
+      footer_copy: '© 2025 ReplyAI · Fet amb Claude AI',
+      modal_h3: 'Comença gratis 15 dies',
+      modal_p: 'Sense targeta de crèdit. Cancel·la quan vulguis. Et contactarem en menys de 24h.',
+      modal_name_label: 'Nom complet', modal_name_ph: 'El teu nom',
+      modal_email_label: 'Email', modal_email_ph: 'tu@email.com',
+      modal_phone_label: 'Telèfon', modal_phone_ph: '+34 600 000 000',
+      modal_submit: 'Vull començar gratis →',
+      modal_ok_h: 'Rebut!',
+      modal_ok_p: 'Gràcies pel teu interès. Et contactarem en menys de 24h a l\'email que ens has deixat.',
+    }
+  };
+
+  let currentLang = 'es';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = i18n[lang];
+
+    // Update lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+    });
+
+    // Helper to set innerHTML on selector
+    const set = (sel, key) => { const el = document.querySelector(sel); if (el && t[key] !== undefined) el.innerHTML = t[key]; };
+    const setAll = (sel, key) => { document.querySelectorAll(sel).forEach(el => { if (t[key] !== undefined) el.innerHTML = t[key]; }); };
+
+    // NAV
+    set('[data-i18n="nav_cta"]', 'nav_cta');
+
+    // HERO
+    set('[data-i18n="hero_h1"]', 'hero_h1');
+    set('[data-i18n="hero_sub"]', 'hero_sub');
+    set('[data-i18n="hero_cta1"]', 'hero_cta1');
+    set('[data-i18n="hero_cta2"]', 'hero_cta2');
+    set('[data-i18n="stat1"]', 'stat1');
+    set('[data-i18n="stat2"]', 'stat2');
+
+    // PROBLEM
+    set('[data-i18n="prob_label"]', 'prob_label');
+    set('[data-i18n="prob_h2"]', 'prob_h2');
+    set('[data-i18n="prob_sub"]', 'prob_sub');
+    set('[data-i18n="prob1_h"]', 'prob1_h'); set('[data-i18n="prob1_p"]', 'prob1_p');
+    set('[data-i18n="prob2_h"]', 'prob2_h'); set('[data-i18n="prob2_p"]', 'prob2_p');
+    set('[data-i18n="prob3_h"]', 'prob3_h'); set('[data-i18n="prob3_p"]', 'prob3_p');
+    set('[data-i18n="prob4_h"]', 'prob4_h'); set('[data-i18n="prob4_p"]', 'prob4_p');
+
+    // HOW IT WORKS
+    set('[data-i18n="how_label"]', 'how_label'); set('[data-i18n="how_h2"]', 'how_h2'); set('[data-i18n="how_sub"]', 'how_sub');
+    set('[data-i18n="step1_h"]', 'step1_h'); set('[data-i18n="step1_p"]', 'step1_p');
+    set('[data-i18n="step1_c1"]', 'step1_c1'); set('[data-i18n="step1_c2"]', 'step1_c2'); set('[data-i18n="step1_c3"]', 'step1_c3');
+    set('[data-i18n="step2_h"]', 'step2_h'); set('[data-i18n="step2_p"]', 'step2_p');
+    set('[data-i18n="step2_c1"]', 'step2_c1'); set('[data-i18n="step2_c2"]', 'step2_c2'); set('[data-i18n="step2_c3"]', 'step2_c3');
+    set('[data-i18n="step3_h"]', 'step3_h'); set('[data-i18n="step3_p"]', 'step3_p');
+    set('[data-i18n="step3_c1"]', 'step3_c1'); set('[data-i18n="step3_c2"]', 'step3_c2'); set('[data-i18n="step3_c3"]', 'step3_c3');
+    set('[data-i18n="tl1"]', 'tl1'); set('[data-i18n="tl2"]', 'tl2'); set('[data-i18n="tl3"]', 'tl3'); set('[data-i18n="tl4"]', 'tl4'); set('[data-i18n="tl5"]', 'tl5');
+
+    // DEMO
+    set('[data-i18n="demo_label"]', 'demo_label'); set('[data-i18n="demo_h2"]', 'demo_h2');
+    set('[data-i18n="demo_bar"]', 'demo_bar'); set('[data-i18n="demo_col1"]', 'demo_col1'); set('[data-i18n="demo_col2"]', 'demo_col2');
+    set('[data-i18n="demo_c1"]', 'demo_c1'); set('[data-i18n="demo_c2"]', 'demo_c2'); set('[data-i18n="demo_c3"]', 'demo_c3');
+    set('[data-i18n="demo_r1"]', 'demo_r1'); set('[data-i18n="demo_r2"]', 'demo_r2'); set('[data-i18n="demo_r3"]', 'demo_r3');
+
+    // KNOWLEDGE
+    set('[data-i18n="kn_label"]', 'kn_label'); set('[data-i18n="kn_h2"]', 'kn_h2'); set('[data-i18n="kn_sub"]', 'kn_sub');
+    set('[data-i18n="kn1_h"]', 'kn1_h'); set('[data-i18n="kn1_p"]', 'kn1_p');
+    set('[data-i18n="kn1_i1"]', 'kn1_i1'); set('[data-i18n="kn1_i2"]', 'kn1_i2'); set('[data-i18n="kn1_i3"]', 'kn1_i3'); set('[data-i18n="kn1_i4"]', 'kn1_i4');
+    set('[data-i18n="kn2_h"]', 'kn2_h'); set('[data-i18n="kn2_p"]', 'kn2_p');
+    set('[data-i18n="kn2_i1"]', 'kn2_i1'); set('[data-i18n="kn2_i2"]', 'kn2_i2'); set('[data-i18n="kn2_i3"]', 'kn2_i3'); set('[data-i18n="kn2_i4"]', 'kn2_i4');
+    set('[data-i18n="kn_flow1"]', 'kn_flow1'); set('[data-i18n="kn_flow2"]', 'kn_flow2'); set('[data-i18n="kn_flow3"]', 'kn_flow3');
+    set('[data-i18n="kn_alert_h"]', 'kn_alert_h'); set('[data-i18n="kn_alert_p"]', 'kn_alert_p');
+
+    // LANGUAGES
+    set('[data-i18n="lang_label"]', 'lang_label'); set('[data-i18n="lang_h2"]', 'lang_h2'); set('[data-i18n="lang_sub"]', 'lang_sub'); set('[data-i18n="lang_note"]', 'lang_note');
+    set('[data-i18n="lang_en_desc"]', 'lang_en_desc'); set('[data-i18n="lang_es_desc"]', 'lang_es_desc'); set('[data-i18n="lang_ca_desc"]', 'lang_ca_desc');
+
+    // PRICING
+    set('[data-i18n="price_label"]', 'price_label'); set('[data-i18n="price_h2"]', 'price_h2'); set('[data-i18n="price_sub"]', 'price_sub');
+    set('[data-i18n="plan_popular"]', 'plan_popular');
+    document.querySelectorAll('[data-i18n="plan_period"]').forEach(el => el.innerHTML = t.plan_period);
+    document.querySelectorAll('[data-i18n="plan_nocredit"]').forEach(el => el.innerHTML = t.plan_nocredit);
+    document.querySelectorAll('[data-i18n="plan_cta"]').forEach(el => el.innerHTML = t.plan_cta);
+    set('[data-i18n="plan1_name"]', 'plan1_name'); set('[data-i18n="plan1_f1"]', 'plan1_f1'); set('[data-i18n="plan1_f2"]', 'plan1_f2'); set('[data-i18n="plan1_f3"]', 'plan1_f3'); set('[data-i18n="plan1_f4"]', 'plan1_f4'); set('[data-i18n="plan1_f5"]', 'plan1_f5');
+    set('[data-i18n="plan2_name"]', 'plan2_name'); set('[data-i18n="plan2_f1"]', 'plan2_f1'); set('[data-i18n="plan2_f2"]', 'plan2_f2'); set('[data-i18n="plan2_f3"]', 'plan2_f3'); set('[data-i18n="plan2_f4"]', 'plan2_f4'); set('[data-i18n="plan2_f5"]', 'plan2_f5'); set('[data-i18n="plan2_f6"]', 'plan2_f6'); set('[data-i18n="plan2_f7"]', 'plan2_f7');
+    set('[data-i18n="plan3_name"]', 'plan3_name'); set('[data-i18n="plan3_f1"]', 'plan3_f1'); set('[data-i18n="plan3_f2"]', 'plan3_f2'); set('[data-i18n="plan3_f3"]', 'plan3_f3'); set('[data-i18n="plan3_f4"]', 'plan3_f4'); set('[data-i18n="plan3_f5"]', 'plan3_f5'); set('[data-i18n="plan3_f6"]', 'plan3_f6'); set('[data-i18n="plan3_f7"]', 'plan3_f7'); set('[data-i18n="plan3_f8"]', 'plan3_f8');
+
+    // FAQ
+    set('[data-i18n="faq_label"]', 'faq_label'); set('[data-i18n="faq_h2"]', 'faq_h2');
+    set('[data-i18n="faq1_q"]', 'faq1_q'); set('[data-i18n="faq1_a"]', 'faq1_a');
+    set('[data-i18n="faq2_q"]', 'faq2_q'); set('[data-i18n="faq2_a"]', 'faq2_a');
+    set('[data-i18n="faq3_q"]', 'faq3_q'); set('[data-i18n="faq3_a"]', 'faq3_a');
+    set('[data-i18n="faq4_q"]', 'faq4_q'); set('[data-i18n="faq4_a"]', 'faq4_a');
+    set('[data-i18n="faq5_q"]', 'faq5_q'); set('[data-i18n="faq5_a"]', 'faq5_a');
+
+    // CTA + FOOTER
+    set('[data-i18n="cta_h2"]', 'cta_h2'); set('[data-i18n="cta_sub"]', 'cta_sub'); set('[data-i18n="cta_btn"]', 'cta_btn');
+    set('[data-i18n="footer_copy"]', 'footer_copy');
+
+    // MODAL
+    set('[data-i18n="modal_h3"]', 'modal_h3'); set('[data-i18n="modal_p"]', 'modal_p');
+    set('[data-i18n="modal_name_label"]', 'modal_name_label');
+    set('[data-i18n="modal_email_label"]', 'modal_email_label');
+    set('[data-i18n="modal_phone_label"]', 'modal_phone_label');
+    document.querySelector('[data-i18n="modal_name_ph"]')?.setAttribute('placeholder', t.modal_name_ph);
+    document.querySelector('[data-i18n="modal_email_ph"]')?.setAttribute('placeholder', t.modal_email_ph);
+    document.querySelector('[data-i18n="modal_phone_ph"]')?.setAttribute('placeholder', t.modal_phone_ph);
+    set('[data-i18n="modal_submit"]', 'modal_submit');
+    set('[data-i18n="modal_ok_h"]', 'modal_ok_h'); set('[data-i18n="modal_ok_p"]', 'modal_ok_p');
+
+    document.documentElement.lang = lang;
+  }
+
+  // ── REVEAL ON SCROLL ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   reveals.forEach(r => observer.observe(r));
 
-  // FAQ toggle
+  // ── FAQ TOGGLE ──
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
@@ -1065,20 +1372,9 @@
     });
   });
 
-  // Typing animation loop
-  setInterval(() => {
-    const t = document.querySelector('.typing');
-    if (!t) return;
-    t.parentElement.innerHTML = `
-      <div class="reply-bubble">
-        ¡Lucía qué alegría! 🙌 Sí, tengo una guía para principiantes que acabo de actualizar. Te la mando por DM y la subo esta semana al perfil!
-      </div>`;
-    setTimeout(() => {
-      t?.parentElement?.insertAdjacentHTML('beforeend', '<div class="typing"><span></span><span></span><span></span></div>');
-    }, 3000);
-  }, 5000);
+  // Typing animation removed — 3 static replies now shown
 
-  // Modal
+  // ── MODAL ──
   function openModal(planName) {
     document.getElementById('modalPlanName').textContent = planName;
     document.getElementById('formPlan').value = planName;
@@ -1088,60 +1384,43 @@
     document.getElementById('modalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
   function closeModal() {
     document.getElementById('modalOverlay').classList.remove('open');
     document.body.style.overflow = '';
     document.getElementById('contactForm').reset();
   }
-
-  // Cerrar al hacer clic fuera
   document.getElementById('modalOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
   });
-
-  // Asociar botones a planes
   document.querySelectorAll('.plan-btn').forEach((btn, i) => {
-    const planes = ['Plan Básico', 'Plan Mejorado', 'Plan Premium'];
+    const t = i18n[currentLang];
+    const planes = [t.plan1_name, t.plan2_name, t.plan3_name];
     btn.addEventListener('click', () => openModal(planes[i] || 'Plan ReplyAI'));
   });
-
-  // Botones CTA hero y final
   document.querySelectorAll('.btn-primary').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal('Plan ReplyAI');
-    });
+    btn.addEventListener('click', (e) => { e.preventDefault(); openModal('Plan ReplyAI'); });
   });
 
-  // Envío a Formspree
+  // ── FORMSPREE ──
   document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.textContent = 'Enviando…';
-
+    btn.textContent = '...';
     const data = new FormData(this);
-
     try {
-      const res = await fetch('https://formspree.io/f/mdapnkly', {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
+      const res = await fetch('https://formspree.io/f/mdapnkly', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
       if (res.ok) {
         document.getElementById('modalForm').style.display = 'none';
         document.getElementById('modalSuccess').style.display = 'block';
       } else {
         btn.disabled = false;
-        btn.textContent = 'Quiero empezar gratis →';
-        alert('Hubo un error. Por favor inténtalo de nuevo.');
+        btn.textContent = i18n[currentLang].modal_submit;
+        alert('Error. Please try again.');
       }
     } catch {
       btn.disabled = false;
-      btn.textContent = 'Quiero empezar gratis →';
-      alert('Hubo un error de conexión. Por favor inténtalo de nuevo.');
+      btn.textContent = i18n[currentLang].modal_submit;
     }
   });
 </script>
